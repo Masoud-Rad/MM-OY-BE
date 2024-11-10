@@ -1,2 +1,6 @@
 DROP DATABASE IF EXISTS mmoydb;
+DROP DATABASE IF EXISTS mmoydb_test;
+
+
 CREATE DATABASE mmoydb;
+CREATE DATABASE mmoydb_test;
