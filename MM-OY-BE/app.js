@@ -3,12 +3,13 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-const {getCompanyDetails} = require("./controllers/api.controllers")
+const {getCompanyDetails, getMainPageData} = require("./controllers/api.controllers")
 
 app.use(cors());
 
 //---------------------------GET------------------------------
 app.get('/api/companyDetails', getCompanyDetails);
+app.get('/api/mainPageData', getMainPageData);
 
 
 
