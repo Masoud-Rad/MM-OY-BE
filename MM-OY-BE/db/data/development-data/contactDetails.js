@@ -1,7 +1,10 @@
 module.exports = [
-    {
-      tell: '00350000000000',
-      email: 'mm_oy@gmail.com'
-    }
-  ];
-  
+  {
+    Phone: '00350000000000',
+    landline:"0000000000",
+    instagram:'iiiii',
+    facebook:'FFFF',
+    whatsapp:'WWWW',
+    email: 'mm_oy@gmail.com'
+  }
+];

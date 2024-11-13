@@ -4,7 +4,7 @@ const connection = require("../db/connection");
 const seed = require("../db/seeds/seed");
 
 const devData = require("../db/data/test-data/index");
-const { expect } = require("@jest/globals");
+const { expect, describe } = require("@jest/globals");
 
 beforeEach(() => seed(devData));
 afterAll(() => connection.end());
@@ -49,4 +49,21 @@ describe("getting mainPageData", () => {
         expect(result.hasOwnProperty("main_url")).toBe(true);
       });
   });
+});
+
+
+describe("getting seconPageData",()=>{
+  test("GET - status: 200 - respond with an abject containing secondPageData", () => {
+    return request(app)
+      .get("/api/secondPageData")
+      .expect(200)
+      .then((response) => {
+        const result = response.body.secondPageData[0];
+        expect(typeof result).toBe("object");
+        expect(result.hasOwnProperty("title")).toBe(true);
+        expect(result.hasOwnProperty("content")).toBe(true);
+        expect(result.hasOwnProperty("second_url")).toBe(true);
+      });
+  });
+
 });

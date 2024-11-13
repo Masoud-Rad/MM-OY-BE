@@ -1,6 +1,6 @@
 const {selectCompanyDetails} = require('../models/logo.models')
 const {selectMainPageData} = require('../models/mainPage.models')
-
+const {selectSecondPageData} = require('../models/secondPage.models')
 //-------------------------Get---------------------------------------------------------    
 
 exports.getCompanyDetails = (req, res, next)=>{
@@ -23,3 +23,12 @@ exports.getMainPageData = (req, res, next)=>{
     })
 }
 
+exports.getSecondPageData = (req, res, next)=>{
+    selectSecondPageData()
+    .then((data)=>{ 
+        res.status(200).send({secondPageData: data})
+    })
+    .catch((err)=>{
+        next(err)
+    })
+}
