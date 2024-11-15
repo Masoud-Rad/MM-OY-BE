@@ -9,7 +9,7 @@ const { expect, describe } = require("@jest/globals");
 beforeEach(() => seed(devData));
 afterAll(() => connection.end());
 
-describe("incorect api/getApi", () => {
+describe("Incorect api/getApi", () => {
   test("GET - status: 404 - not exist", () => {
     return request(app)
       .get("/nonsence")
@@ -21,7 +21,7 @@ describe("incorect api/getApi", () => {
   });
 });
 
-describe("getting company name and logo url", () => {
+describe("Getting company name and logo url", () => {
   test("GET - status: 200 - respond with an abject containing companyName and logoUrl", () => {
     return request(app)
       .get("/api/companyDetails")
@@ -35,7 +35,7 @@ describe("getting company name and logo url", () => {
   });
 });
 
-describe("getting mainPageData", () => {
+describe("Getting mainPageData", () => {
   test("GET - status: 200 - respond with an abject containing mainPageData", () => {
     return request(app)
       .get("/api/mainPageData")
@@ -52,7 +52,7 @@ describe("getting mainPageData", () => {
 });
 
 
-describe("getting seconPageData",()=>{
+describe("Getting seconPageData",()=>{
   test("GET - status: 200 - respond with an abject containing secondPageData", () => {
     return request(app)
       .get("/api/secondPageData")
@@ -67,3 +67,22 @@ describe("getting seconPageData",()=>{
   });
 
 });
+
+describe("Getting reviews", ()=>{
+  test("",()=>{
+    return request(app)
+    .get("/api/reviewData")
+    .expect(200)
+    .then((response)=>{ 
+      const result = response.body.reviews;
+      result.forEach((review)=>{ 
+        expect(Object.keys(review).length).toBe(4);
+        expect(review.hasOwnProperty("id")).toBe(true);
+        expect(review.hasOwnProperty("body")).toBe(true);
+        expect(review.hasOwnProperty("name")).toBe(true);
+        expect(review.hasOwnProperty("created_at")).toBe(true);
+      })
+    })
+  })
+})
+

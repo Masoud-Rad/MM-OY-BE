@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-const {getCompanyDetails, getMainPageData, getSecondPageData} = require("./controllers/api.controllers")
+const {getCompanyDetails, getMainPageData, getSecondPageData, getReviewData} = require("./controllers/api.controllers")
 
 app.use(cors());
 
@@ -12,7 +12,7 @@ app.use(cors());
 app.get('/api/companyDetails', getCompanyDetails);
 app.get('/api/mainPageData', getMainPageData);
 app.get('/api/secondPageData', getSecondPageData);
-
+app.get('/api/reviewData', getReviewData)
 
 
 

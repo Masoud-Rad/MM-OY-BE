@@ -94,17 +94,14 @@ const seed = ({ logo, mainPage, secondPage, review, contactDetails }) => {
       return db.query(insertSecondpageQuery);
     })
     .then(() => {
-      const insertReviewQuery = format(
-        `
-                INSERT INTO review (name, body, created_at) 
-                VALUES (%L, %L, %L)`,
-        review[0].name,
-        review[0].body,
-        review[0].created_at
-      );
+      const reviewsData = review.map(({ name, body, created_at }) => [name, body, created_at]);
 
+      const insertReviewQuery = format(`
+          INSERT INTO review (name, body, created_at) 
+          VALUES %L`, reviewsData);
+  
       return db.query(insertReviewQuery);
-    })
+  })
     .then(() => {
       const insertContactDetailsQuery = format(
         `
