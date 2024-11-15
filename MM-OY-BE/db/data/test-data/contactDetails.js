@@ -1,6 +1,6 @@
 module.exports = [
     {
-      Phone: '00350000000000',
+      phone: '00350000000000',
       landline:"0000000000",
       instagram:'iiiii',
       facebook:'FFFF',

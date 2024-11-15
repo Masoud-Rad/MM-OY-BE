@@ -86,3 +86,21 @@ describe("Getting reviews", ()=>{
   })
 })
 
+describe("Getting contactDetails",()=>{
+  test("GET - status: 200 - respond with an abject containing contactDetails Data", () => {
+    return request(app)
+      .get("/api/contactDetails")
+      .expect(200)
+      .then((response) => {
+        const result = response.body.contactDetails[0];
+        expect(typeof result).toBe("object");
+        expect(result.hasOwnProperty("phone")).toBe(true);
+        expect(result.hasOwnProperty("landline")).toBe(true);
+        expect(result.hasOwnProperty("instagram")).toBe(true);
+        expect(result.hasOwnProperty("facebook")).toBe(true);
+        expect(result.hasOwnProperty("whatsapp")).toBe(true);
+        expect(result.hasOwnProperty("email")).toBe(true);
+      });
+  });
+
+});

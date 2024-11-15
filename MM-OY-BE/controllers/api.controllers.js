@@ -2,6 +2,7 @@ const {selectCompanyDetails} = require('../models/logo.models')
 const {selectMainPageData} = require('../models/mainPage.models')
 const {selectSecondPageData} = require('../models/secondPage.models')
 const {selectReviewData} = require('../models/reviews.models')
+const {selectContactDetails} = require('../models/contactDetails.models')
 //-------------------------Get---------------------------------------------------------    
 
 exports.getCompanyDetails = (req, res, next)=>{
@@ -38,6 +39,16 @@ exports.getReviewData = (req, res, next)=>{
     selectReviewData()
     .then((data)=>{ 
         res.status(200).send({reviews: data})
+    })
+    .catch((err)=>{
+        next(err)
+    })
+}
+
+exports.getContactDetails = (req, res, next)=>{
+    selectContactDetails()
+    .then((data)=>{ 
+        res.status(200).send({contactDetails: data})
     })
     .catch((err)=>{
         next(err)

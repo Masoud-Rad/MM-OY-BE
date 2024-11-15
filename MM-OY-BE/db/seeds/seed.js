@@ -48,7 +48,7 @@ const seed = ({ logo, mainPage, secondPage, review, contactDetails }) => {
     .then(() => {
       return db.query(`
                 CREATE TABLE contact (
-                    Phone VARCHAR,
+                    phone VARCHAR,
                     landline VARCHAR,
                     instagram VARCHAR,
                     facebook VARCHAR,
@@ -94,20 +94,27 @@ const seed = ({ logo, mainPage, secondPage, review, contactDetails }) => {
       return db.query(insertSecondpageQuery);
     })
     .then(() => {
-      const reviewsData = review.map(({ name, body, created_at }) => [name, body, created_at]);
+      const reviewsData = review.map(({ name, body, created_at }) => [
+        name,
+        body,
+        created_at,
+      ]);
 
-      const insertReviewQuery = format(`
+      const insertReviewQuery = format(
+        `
           INSERT INTO review (name, body, created_at) 
-          VALUES %L`, reviewsData);
-  
+          VALUES %L`,
+        reviewsData
+      );
+
       return db.query(insertReviewQuery);
-  })
+    })
     .then(() => {
       const insertContactDetailsQuery = format(
         `
-                INSERT INTO contact (Phone, landline, instagram, facebook, whatsapp, email)
+                INSERT INTO contact (phone, landline, instagram, facebook, whatsapp, email)
                 VALUES (%L, %L, %L, %L, %L, %L)`,
-        contactDetails[0].Phone,
+        contactDetails[0].phone,
         contactDetails[0].landline,
         contactDetails[0].instagram,
         contactDetails[0].facebook,
