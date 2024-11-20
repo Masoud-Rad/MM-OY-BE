@@ -9,6 +9,8 @@ const { expect, describe } = require("@jest/globals");
 beforeEach(() => seed(devData));
 afterAll(() => connection.end());
 
+//----------------------------------------GET------------------------
+
 describe("Incorect api/getApi", () => {
   test("GET - status: 404 - not exist", () => {
     return request(app)
@@ -51,8 +53,7 @@ describe("Getting mainPageData", () => {
   });
 });
 
-
-describe("Getting seconPageData",()=>{
+describe("Getting seconPageData", () => {
   test("GET - status: 200 - respond with an abject containing secondPageData", () => {
     return request(app)
       .get("/api/secondPageData")
@@ -65,28 +66,27 @@ describe("Getting seconPageData",()=>{
         expect(result.hasOwnProperty("second_url")).toBe(true);
       });
   });
-
 });
 
-describe("Getting reviews", ()=>{
-  test("",()=>{
+describe("Getting reviews", () => {
+  test("", () => {
     return request(app)
-    .get("/api/reviewData")
-    .expect(200)
-    .then((response)=>{ 
-      const result = response.body.reviews;
-      result.forEach((review)=>{ 
-        expect(Object.keys(review).length).toBe(4);
-        expect(review.hasOwnProperty("id")).toBe(true);
-        expect(review.hasOwnProperty("body")).toBe(true);
-        expect(review.hasOwnProperty("name")).toBe(true);
-        expect(review.hasOwnProperty("created_at")).toBe(true);
-      })
-    })
-  })
-})
+      .get("/api/reviewData")
+      .expect(200)
+      .then((response) => {
+        const result = response.body.reviews;
+        result.forEach((review) => {
+          expect(Object.keys(review).length).toBe(4);
+          expect(review.hasOwnProperty("id")).toBe(true);
+          expect(review.hasOwnProperty("body")).toBe(true);
+          expect(review.hasOwnProperty("name")).toBe(true);
+          expect(review.hasOwnProperty("created_at")).toBe(true);
+        });
+      });
+  });
+});
 
-describe("Getting contactDetails",()=>{
+describe("Getting contactDetails", () => {
   test("GET - status: 200 - respond with an abject containing contactDetails Data", () => {
     return request(app)
       .get("/api/contactDetails")
@@ -102,5 +102,37 @@ describe("Getting contactDetails",()=>{
         expect(result.hasOwnProperty("email")).toBe(true);
       });
   });
+});
 
+//----------------------------------------Post-------------------------
+
+describe("POST- companyDetails", () => {
+  test("POST- status: 201- responds with the New Company Details", () => {
+    const newCompanyDetails = {
+      company_name: "MM-newName",
+      logo_url: "www.New-link.com",
+    };
+    return request(app)
+      .post("/api/companyDetails")
+      .send(newCompanyDetails)
+      .expect(201)
+      .then(({ body }) => {
+        expect(body.companyDetails.company_name).toBe("MM-newName");
+        expect(body.companyDetails.logo_url).toBe("www.New-link.com");
+      });
+  });
+
+  test("POST- status: 203- responds with Non-Authoritative Information", () => {
+    const newCompanyDetails = {
+      body: "this is my test_add_comment body",
+      username: "Mas",
+    };
+    return request(app)
+      .post("/api/companyDetails")
+      .send(newCompanyDetails)
+      .expect(400)
+      .then(({ body }) => {
+        expect(body.msg).toBe("bad request!");
+      });
+  });
 });

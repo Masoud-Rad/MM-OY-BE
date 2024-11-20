@@ -1,4 +1,4 @@
-const {selectCompanyDetails} = require('../models/logo.models')
+const {selectCompanyDetails, addCompanyDetails} = require('../models/logo.models')
 const {selectMainPageData} = require('../models/mainPage.models')
 const {selectSecondPageData} = require('../models/secondPage.models')
 const {selectReviewData} = require('../models/reviews.models')
@@ -54,3 +54,16 @@ exports.getContactDetails = (req, res, next)=>{
         next(err)
     })
 }
+
+//----------------------------Post-----------------------------------
+
+exports.postCompanyDetails=(req,res,next)=>{
+    const newCompanyDetails= req.body;
+    addCompanyDetails(newCompanyDetails).then((data)=>{
+        res.status(201).send({ 'companyDetails': data })
+    }) 
+    .catch((error) => {
+        next(error)
+    })
+}
+

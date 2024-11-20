@@ -62,8 +62,8 @@ const seed = ({ logo, mainPage, secondPage, review, contactDetails }) => {
         `
                 INSERT INTO logo (company_name, logo_url) 
                 VALUES (%L, %L)`,
-        logo[0].companyName,
-        logo[0].logoUrl
+        logo[0].company_name,
+        logo[0].logo_url
       );
 
       return db.query(insertLogoAndNameQuery);
