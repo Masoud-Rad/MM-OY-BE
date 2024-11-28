@@ -1,5 +1,5 @@
 const {selectCompanyDetails, addCompanyDetails} = require('../models/logo.models')
-const {selectMainPageData} = require('../models/mainPage.models')
+const {selectMainPageData, addMainPageData} = require('../models/mainPage.models')
 const {selectSecondPageData} = require('../models/secondPage.models')
 const {selectReviewData} = require('../models/reviews.models')
 const {selectContactDetails} = require('../models/contactDetails.models')
@@ -67,3 +67,12 @@ exports.postCompanyDetails=(req,res,next)=>{
     })
 }
 
+exports.postMainPageData = (req, res, next)=>{
+    const newMainPageData = req.body;
+    addMainPageData(newMainPageData).then((data)=>{
+        res.status(201).send({'mainPageData': data})
+    })
+    .catch((error)=>{
+        next(error)
+    })
+}

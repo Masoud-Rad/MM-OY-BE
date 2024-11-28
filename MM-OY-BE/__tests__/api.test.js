@@ -110,7 +110,7 @@ describe("POST- companyDetails", () => {
   test("POST- status: 201- responds with the New Company Details", () => {
     const newCompanyDetails = {
       company_name: "MM-newName",
-      logo_url: "www.New-link.com",
+      logo_url: "www.New-link.com"
     };
     return request(app)
       .post("/api/companyDetails")
@@ -136,3 +136,27 @@ describe("POST- companyDetails", () => {
       });
   });
 });
+
+
+describe("POST mainPageData",()=>{
+  test("POST- status: 201- responds with Main Page's Data",()=>{
+    const newMainPageData = {
+        title: 'MainPageTitle',
+        subtitle: 'MainPageSubtitle',
+        content:'Even my hjkb fkjehbwkjfbwe feoufhewhve your cherished belongings, we are there for you from pick up to delivery. You can enjoy a stress-free removal from start to finish. No job is too small or big for The Removal Man.',
+        url: "www.New-link.com"
+      }
+      return request(app)
+      .post("/api/mainPageData")
+      .send(newMainPageData)
+      .expect(201)
+      .then(({ body }) => {
+        expect(Object.keys(body.mainPageData).length).toBe(4);
+        expect(body.mainPageData.title).toBe("MainPageTitle");
+        expect(body.mainPageData.subtitle).toBe("MainPageSubtitle");
+        expect(body.mainPageData.hasOwnProperty("content")).toBe(true);
+        expect(body.mainPageData.hasOwnProperty("main_url")).toBe(true);
+
+      });
+  })
+})
