@@ -9,36 +9,12 @@ exports.selectReviewData= ()=>{
 
 
 exports.addReviewData = (newData) => {
-    const { body, name } = newData;
+    const {name, body} = newData;
   
-    const fields = [];
-    const values = [];
-    const placeholders = [];
-  
-    if (body) {
-      fields.push("body");
-      values.push(body);
-      placeholders.push(`$${values.length}`);
-    }
-  
-    if (name) {
-      fields.push("name");
-      values.push(name);
-      placeholders.push(`$${values.length}`);
-    }
-  
-  
-    if (fields.length === 0) {
-      return Promise.reject({ status: 400, msg: "bad request!" });
-    }
-  
-    const query = `
-        INSERT INTO review (${fields.join(", ")}) 
-        VALUES (${placeholders.join(", ")})
+    return db.query(`INSERT INTO review (name, body)
+        VALUES ($1, $2)
         RETURNING *;
-      `;
-  
-    return db.query(query, values).then((result) => { 
+        `, [name,body]).then((result) => { 
       return result.rows[0];
     });
   };
