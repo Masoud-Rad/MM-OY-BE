@@ -10,7 +10,7 @@ const {
   selectSecondPageData,
   addSecondPageData,
 } = require("../models/secondPage.models");
-const { selectReviewData } = require("../models/reviews.models");
+const { selectReviewData, addReviewData } = require("../models/reviews.models");
 const { selectContactDetails } = require("../models/contactDetails.models");
 //-------------------------Get---------------------------------------------------------
 
@@ -98,3 +98,14 @@ exports.postSecondPageData = (req, res, next) => {
       next(error);
     });
 };
+
+exports.postReviewData = (req, res, next) => {
+    const newReviewData = req.body;
+    addReviewData(newReviewData)
+      .then((data) => { 
+        res.status(201).send({ reviewData: data });
+      })
+      .catch((error) => {
+        next(error);
+      });
+  };

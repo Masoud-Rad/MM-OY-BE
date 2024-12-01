@@ -181,3 +181,46 @@ describe("POST secondPageData",()=>{
     })
   })
 })
+
+describe("POST secondPageData",()=>{
+  test("POST- status: 201- responds with Second Page's Data",()=>{
+    const newSecondPageData = {
+      "title": "Our miOur mission is to help you move home.",
+      "content": "Your belongings are in safe hands.",
+      "url": "www.New-link.com"
+    }
+
+    return request(app)
+    .post("/api/secondPageData")
+    .send(newSecondPageData)
+    .expect(201)
+    .then(({body})=>{
+      expect(Object.keys(body.secondPageData).length).toBe(3)
+      expect(body.secondPageData.second_url).toBe("www.New-link.com")
+      expect(body.secondPageData.hasOwnProperty("title")).toBe(true)
+      expect(body.secondPageData.hasOwnProperty("content")).toBe(true)
+    })
+  })
+})
+
+describe("POST reviewData",()=>{
+  test("POST- status: 201- responds with Second Page's Data",()=>{
+    const newReviewData = {
+      "body": "Itaque quisquam est similique et est perspiciatis reprehenderit voluptatem autem. Voluptatem accusantium eius error adipisci quibusdam doloribus.",
+      "name": "grumpy19"
+    }
+
+    return request(app)
+    .post("/api/reviewData")
+    .send(newReviewData)
+    .expect(201)
+    .then(({body})=>{
+      expect(Object.keys(body.reviewData).length).toBe(4)
+      expect(body.reviewData.name).toBe("grumpy19")
+      expect(body.reviewData.hasOwnProperty("name")).toBe(true)
+      expect(body.reviewData.hasOwnProperty("id")).toBe(true)
+      expect(body.reviewData.hasOwnProperty("body")).toBe(true)
+      expect(body.reviewData.hasOwnProperty("created_at")).toBe(true)
+    })
+  })
+})
