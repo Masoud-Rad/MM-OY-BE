@@ -4,7 +4,7 @@ const connection = require("../db/connection");
 const seed = require("../db/seeds/seed");
 
 const devData = require("../db/data/test-data/index");
-const { expect, describe } = require("@jest/globals");
+const { expect, describe, test } = require("@jest/globals");
 
 beforeEach(() => seed(devData));
 afterAll(() => connection.end());
@@ -158,5 +158,26 @@ describe("POST mainPageData",()=>{
         expect(body.mainPageData.hasOwnProperty("main_url")).toBe(true);
 
       });
+  })
+})
+
+describe("POST secondPageData",()=>{
+  test("POST- status: 201- responds with Second Page's Data",()=>{
+    const newSecondPageData = {
+      "title": "Our miOur mission is to help you move home.",
+      "content": "Your belongings are in safe hands.",
+      "url": "www.New-link.com"
+    }
+
+    return request(app)
+    .post("/api/secondPageData")
+    .send(newSecondPageData)
+    .expect(201)
+    .then(({body})=>{
+      expect(Object.keys(body.secondPageData).length).toBe(3)
+      expect(body.secondPageData.second_url).toBe("www.New-link.com")
+      expect(body.secondPageData.hasOwnProperty("title")).toBe(true)
+      expect(body.secondPageData.hasOwnProperty("content")).toBe(true)
+    })
   })
 })

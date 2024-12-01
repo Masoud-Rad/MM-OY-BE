@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-const {getCompanyDetails, getMainPageData, getSecondPageData, getReviewData, getContactDetails, postCompanyDetails, postMainPageData} = require("./controllers/api.controllers")
+const {getCompanyDetails, getMainPageData, getSecondPageData, getReviewData, getContactDetails, postCompanyDetails, postMainPageData, postSecondPageData} = require("./controllers/api.controllers")
 
 app.use(cors());
 
@@ -19,9 +19,8 @@ app.get('/api/contactDetails', getContactDetails)
 //----------------------------------------------Post-------------------------------------------------
 
 app.post("/api/companyDetails", postCompanyDetails)
-
-app.post('/api/mainPageData', postMainPageData)
-
+app.post("/api/mainPageData", postMainPageData)
+app.post("/api/secondPageData", postSecondPageData)
 
 
 
