@@ -110,15 +110,31 @@ describe("POST- companyDetails", () => {
   test("POST- status: 201- responds with the New Company Details", () => {
     const newCompanyDetails = {
       company_name: "MM-newName",
-      logo_url: "www.New-link.com"
+      logo_url: "www.New-link.com",
     };
     return request(app)
       .post("/api/companyDetails")
       .send(newCompanyDetails)
       .expect(201)
       .then(({ body }) => {
+        expect(Object.keys(body.companyDetails).length).toBe(2);
         expect(body.companyDetails.company_name).toBe("MM-newName");
         expect(body.companyDetails.logo_url).toBe("www.New-link.com");
+      });
+  });
+
+  test("POST- status: 201- responds with the New Company Details", () => {
+    const newCompanyDetails = {
+      company_name: "MM-newName",
+    };
+    return request(app)
+      .post("/api/companyDetails")
+      .send(newCompanyDetails)
+      .expect(201)
+      .then(({ body }) => {
+        expect(Object.keys(body.companyDetails).length).toBe(2);
+        expect(body.companyDetails.company_name).toBe("MM-newName");
+        expect(body.companyDetails.logo_url).toBe(null);
       });
   });
 
@@ -137,16 +153,16 @@ describe("POST- companyDetails", () => {
   });
 });
 
-
-describe("POST mainPageData",()=>{
-  test("POST- status: 201- responds with Main Page's Data",()=>{
+describe("POST mainPageData", () => {
+  test("POST- status: 201- responds with Main Page's Data", () => {
     const newMainPageData = {
-        title: 'MainPageTitle',
-        subtitle: 'MainPageSubtitle',
-        content:'Even my hjkb fkjehbwkjfbwe feoufhewhve your cherished belongings, we are there for you from pick up to delivery. You can enjoy a stress-free removal from start to finish. No job is too small or big for The Removal Man.',
-        url: "www.New-link.com"
-      }
-      return request(app)
+      title: "MainPageTitle",
+      subtitle: "MainPageSubtitle",
+      content:
+        "Even my hjkb fkjehbwkjfbwe feoufhewhve your cherished belongings, we are there for you from pick up to delivery. You can enjoy a stress-free removal from start to finish. No job is too small or big for The Removal Man.",
+      url: "www.New-link.com",
+    };
+    return request(app)
       .post("/api/mainPageData")
       .send(newMainPageData)
       .expect(201)
@@ -156,142 +172,147 @@ describe("POST mainPageData",()=>{
         expect(body.mainPageData.subtitle).toBe("MainPageSubtitle");
         expect(body.mainPageData.hasOwnProperty("content")).toBe(true);
         expect(body.mainPageData.hasOwnProperty("main_url")).toBe(true);
-
       });
-  })
+  });
 
-  test("POST- status: 201- responds with Main Page's Data",()=>{
+  test("POST- status: 201- responds with Main Page's Data", () => {
     const newMainPageData = {
-        title: 'MainPageTitle',
-        subtitle: 'MainPageSubtitle',
-        url: "www.New-link.com"
-      }
-      return request(app)
+      title: "MainPageTitle",
+      subtitle: "MainPageSubtitle",
+      url: "www.New-link.com",
+    };
+    return request(app)
       .post("/api/mainPageData")
       .send(newMainPageData)
       .expect(201)
-      .then(({ body }) => { 
+      .then(({ body }) => {
         expect(Object.keys(body.mainPageData).length).toBe(4);
         expect(body.mainPageData.title).toBe("MainPageTitle");
         expect(body.mainPageData.subtitle).toBe("MainPageSubtitle");
         expect(body.mainPageData.content).toBe(null);
         expect(body.mainPageData.hasOwnProperty("content")).toBe(true);
         expect(body.mainPageData.hasOwnProperty("main_url")).toBe(true);
-
       });
-  })
-})
+  });
+});
 
-
-
-describe("POST secondPageData",()=>{
-  test("POST- status: 201- responds with Second Page's Data",()=>{
+describe("POST secondPageData", () => {
+  test("POST- status: 201- responds with Second Page's Data", () => {
     const newSecondPageData = {
-      "title": "Our miOur mission is to help you move home.",
-      "content": "Your belongings are in safe hands.",
-      "url": "www.New-link.com"
-    }
+      title: "Our miOur mission is to help you move home.",
+      content: "Your belongings are in safe hands.",
+      url: "www.New-link.com",
+    };
 
     return request(app)
-    .post("/api/secondPageData")
-    .send(newSecondPageData)
-    .expect(201)
-    .then(({body})=>{
-      expect(Object.keys(body.secondPageData).length).toBe(3)
-      expect(body.secondPageData.second_url).toBe("www.New-link.com")
-      expect(body.secondPageData.hasOwnProperty("title")).toBe(true)
-      expect(body.secondPageData.hasOwnProperty("content")).toBe(true)
-    })
-  })
-  test("POST- status: 201- responds with Second Page's Data",()=>{
+      .post("/api/secondPageData")
+      .send(newSecondPageData)
+      .expect(201)
+      .then(({ body }) => {
+        expect(Object.keys(body.secondPageData).length).toBe(3);
+        expect(body.secondPageData.second_url).toBe("www.New-link.com");
+        expect(body.secondPageData.hasOwnProperty("title")).toBe(true);
+        expect(body.secondPageData.hasOwnProperty("content")).toBe(true);
+      });
+  });
+  test("POST- status: 201- responds with Second Page's Data", () => {
     const newSecondPageData = {
-      "title": "Our miOur mission is to help you move home.",
-      "url": "www.New-link.com"
-    }
+      title: "Our miOur mission is to help you move home.",
+      url: "www.New-link.com",
+    };
 
     return request(app)
-    .post("/api/secondPageData")
-    .send(newSecondPageData)
-    .expect(201)
-    .then(({body})=>{ 
-      expect(Object.keys(body.secondPageData).length).toBe(3)
-      expect(body.secondPageData.second_url).toBe("www.New-link.com")
-      expect(body.secondPageData.content).toBe(null)
-      expect(body.secondPageData.hasOwnProperty("title")).toBe(true)
-      expect(body.secondPageData.hasOwnProperty("content")).toBe(true)
-      expect(body.secondPageData.hasOwnProperty("second_url")).toBe(true)
-    })
-  })
-})
+      .post("/api/secondPageData")
+      .send(newSecondPageData)
+      .expect(201)
+      .then(({ body }) => {
+        expect(Object.keys(body.secondPageData).length).toBe(3);
+        expect(body.secondPageData.second_url).toBe("www.New-link.com");
+        expect(body.secondPageData.content).toBe(null);
+        expect(body.secondPageData.hasOwnProperty("title")).toBe(true);
+        expect(body.secondPageData.hasOwnProperty("content")).toBe(true);
+        expect(body.secondPageData.hasOwnProperty("second_url")).toBe(true);
+      });
+  });
+});
 
-
-
-describe("POST reviewData",()=>{
-  test("POST- status: 201- responds with review's Data",()=>{
+describe("POST reviewData", () => {
+  test("POST- status: 201- responds with review's Data", () => {
     const newReviewData = {
-      "body": "Itaque quisquam est similique et est perspiciatis reprehenderit voluptatem autem. Voluptatem accusantium eius error adipisci quibusdam doloribus.",
-      "name": "grumpy19"
-    }
+      body: "Itaque quisquam est similique et est perspiciatis reprehenderit voluptatem autem. Voluptatem accusantium eius error adipisci quibusdam doloribus.",
+      name: "grumpy19",
+    };
 
     return request(app)
-    .post("/api/reviewData")
-    .send(newReviewData)
-    .expect(201)
-    .then(({body})=>{
-      expect(Object.keys(body.reviewData).length).toBe(4)
-      expect(body.reviewData.name).toBe("grumpy19")
-      expect(body.reviewData.hasOwnProperty("name")).toBe(true)
-      expect(body.reviewData.hasOwnProperty("id")).toBe(true)
-      expect(body.reviewData.hasOwnProperty("body")).toBe(true)
-      expect(body.reviewData.hasOwnProperty("created_at")).toBe(true)
-    })
-  })
-})
+      .post("/api/reviewData")
+      .send(newReviewData)
+      .expect(201)
+      .then(({ body }) => {
+        expect(Object.keys(body.reviewData).length).toBe(4);
+        expect(body.reviewData.name).toBe("grumpy19");
+        expect(body.reviewData.hasOwnProperty("name")).toBe(true);
+        expect(body.reviewData.hasOwnProperty("id")).toBe(true);
+        expect(body.reviewData.hasOwnProperty("body")).toBe(true);
+        expect(body.reviewData.hasOwnProperty("created_at")).toBe(true);
+      });
+  });
+});
 
-describe("POST contactDetails",()=>{
-  test("POST- status: 201- responds with contact Details",()=>{
+describe("POST contactDetails", () => {
+  test("POST- status: 201- responds with contact Details", () => {
     const newContactDetails = {
-      "phone": "00350000000000",
-      "email": "mm_oy@gmail.com"
-    }
+      phone: "00350000000000",
+      email: "mm_oy@gmail.com",
+    };
 
     return request(app)
-    .post("/api/contactDetails")
-    .send(newContactDetails)
-    .expect(201)
-    .then(({body})=>{
-      expect(Object.keys(body.contactDetails).length).toBe(6)
-      expect(body.contactDetails.phone).toBe("00350000000000")
-      expect(body.contactDetails.email).toBe("mm_oy@gmail.com")
-      expect(body.contactDetails.hasOwnProperty("phone")).toBe(true)
-      expect(body.contactDetails.hasOwnProperty("email")).toBe(true)
-    })
-  })
-  test("POST- status: 201- responds with contact Details",()=>{
+      .post("/api/contactDetails")
+      .send(newContactDetails)
+      .expect(201)
+      .then(({ body }) => {
+        expect(Object.keys(body.contactDetails).length).toBe(6);
+        expect(body.contactDetails.phone).toBe("00350000000000");
+        expect(body.contactDetails.email).toBe("mm_oy@gmail.com");
+        expect(body.contactDetails.hasOwnProperty("phone")).toBe(true);
+        expect(body.contactDetails.hasOwnProperty("email")).toBe(true);
+      });
+  });
+  test("POST- status: 201- responds with contact Details", () => {
     const newContactDetails = {
-      "phone": "00350000000000",
-      "email": "mm_oy@gmail.com",
-      "instagram": "ins"
-    }
+      phone: "00350000000000",
+      email: "mm_oy@gmail.com",
+      instagram: "ins",
+    };
 
     return request(app)
-    .post("/api/contactDetails")
-    .send(newContactDetails)
-    .expect(201)
-    .then(({body})=>{
-      expect(Object.keys(body.contactDetails).length).toBe(6)
-      expect(body.contactDetails.phone).toBe("00350000000000")
-      expect(body.contactDetails.email).toBe("mm_oy@gmail.com")
-      expect(body.contactDetails.instagram).toBe("ins")
-      expect(body.contactDetails.landline).toBe(null)
-      expect(body.contactDetails.facebook).toBe(null)
-      expect(body.contactDetails.whatsapp).toBe(null)
-      expect(body.contactDetails.hasOwnProperty("phone")).toBe(true)
-      expect(body.contactDetails.hasOwnProperty("email")).toBe(true)
-      expect(body.contactDetails.hasOwnProperty("instagram")).toBe(true)
-      expect(body.contactDetails.hasOwnProperty("facebook")).toBe(true)
-      expect(body.contactDetails.hasOwnProperty("whatsapp")).toBe(true)
-      expect(body.contactDetails.hasOwnProperty("landline")).toBe(true)
-    })
-  })
-})
+      .post("/api/contactDetails")
+      .send(newContactDetails)
+      .expect(201)
+      .then(({ body }) => {
+        expect(Object.keys(body.contactDetails).length).toBe(6);
+        expect(body.contactDetails.phone).toBe("00350000000000");
+        expect(body.contactDetails.email).toBe("mm_oy@gmail.com");
+        expect(body.contactDetails.instagram).toBe("ins");
+        expect(body.contactDetails.landline).toBe(null);
+        expect(body.contactDetails.facebook).toBe(null);
+        expect(body.contactDetails.whatsapp).toBe(null);
+        expect(body.contactDetails.hasOwnProperty("phone")).toBe(true);
+        expect(body.contactDetails.hasOwnProperty("email")).toBe(true);
+        expect(body.contactDetails.hasOwnProperty("instagram")).toBe(true);
+        expect(body.contactDetails.hasOwnProperty("facebook")).toBe(true);
+        expect(body.contactDetails.hasOwnProperty("whatsapp")).toBe(true);
+        expect(body.contactDetails.hasOwnProperty("landline")).toBe(true);
+      });
+  });
+});
+
+describe("DELETE Logo and Company Name", () => {
+  test("DELETE -states: 204 , respond with no content", () => {
+    return request(app)
+      .delete("/api/companyDetails")
+      .expect(204)
+      .then((res) => {
+        expect(typeof res).toBe("object");
+      });
+  });
+});

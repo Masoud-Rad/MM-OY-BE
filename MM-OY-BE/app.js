@@ -14,6 +14,7 @@ const {
   postSecondPageData,
   postReviewData,
   postContactDetails,
+  deleteCompanyDetails
 } = require("./controllers/api.controllers");
 
 app.use(cors());
@@ -32,6 +33,13 @@ app.post("/api/mainPageData", postMainPageData);
 app.post("/api/secondPageData", postSecondPageData);
 app.post("/api/reviewData", postReviewData);
 app.post("/api/contactDetails", postContactDetails);
+
+
+
+//----------------------------------------------Delete------------------------------------------------
+
+app.delete("/api/companyDetails", deleteCompanyDetails)
+
 
 //----------------------------------------------Error handeling---------------------------------------
 

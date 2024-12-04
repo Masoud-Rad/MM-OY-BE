@@ -1,6 +1,7 @@
 const {
   selectCompanyDetails,
   addCompanyDetails,
+  removeCompanyDetails
 } = require("../models/logo.models");
 const {
   selectMainPageData,
@@ -120,3 +121,18 @@ exports.postReviewData = (req, res, next) => {
         next(error);
       });
   };
+
+
+
+
+  //----------------------------------------------Delete------------------------------------------------
+
+exports.deleteCompanyDetails = ((req, res, next)=>{
+  removeCompanyDetails().then(()=>{
+    res.sendStatus(204)
+  })
+  .catch((error)=>{
+    next(error);
+  })
+})
+
