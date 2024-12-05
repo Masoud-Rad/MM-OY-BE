@@ -1,7 +1,8 @@
 const {
   selectCompanyDetails,
   addCompanyDetails,
-  removeCompanyDetails
+  updateCompanyDetails,
+  removeCompanyDetails,
 } = require("../models/logo.models");
 const {
   selectMainPageData,
@@ -12,7 +13,10 @@ const {
   addSecondPageData,
 } = require("../models/secondPage.models");
 const { selectReviewData, addReviewData } = require("../models/reviews.models");
-const { selectContactDetails, addContactDetails } = require("../models/contactDetails.models");
+const {
+  selectContactDetails,
+  addContactDetails,
+} = require("../models/contactDetails.models");
 //-------------------------Get---------------------------------------------------------
 
 exports.getCompanyDetails = (req, res, next) => {
@@ -92,7 +96,7 @@ exports.postMainPageData = (req, res, next) => {
 exports.postSecondPageData = (req, res, next) => {
   const newSecondPagedata = req.body;
   addSecondPageData(newSecondPagedata)
-    .then((data) => { 
+    .then((data) => {
       res.status(201).send({ secondPageData: data });
     })
     .catch((error) => {
@@ -101,38 +105,48 @@ exports.postSecondPageData = (req, res, next) => {
 };
 
 exports.postReviewData = (req, res, next) => {
-    const newReviewData = req.body;
-    addReviewData(newReviewData)
-      .then((data) => { 
-        res.status(201).send({ reviewData: data });
-      })
-      .catch((error) => {
-        next(error);
-      });
-  };
+  const newReviewData = req.body;
+  addReviewData(newReviewData)
+    .then((data) => {
+      res.status(201).send({ reviewData: data });
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
 
-  exports.postContactDetails= (req, res, next) => {
-    const newContactDetails = req.body;
-    addContactDetails(newContactDetails)
-      .then((data) => { 
-        res.status(201).send({ contactDetails: data });
-      })
-      .catch((error) => {
-        next(error);
-      });
-  };
+exports.postContactDetails = (req, res, next) => {
+  const newContactDetails = req.body;
+  addContactDetails(newContactDetails)
+    .then((data) => {
+      res.status(201).send({ contactDetails: data });
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
 
+//----------------------------------------------Patch-------------------------------------------------
 
+exports.patchCompanyDetails = (req, res, next) => {
+  const update = req.body;
+  updateCompanyDetails(update)
+    .then((updatedCompanyDetails) => {
+      res.status(202).send({ updatedCompanyDetails });
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
 
+//----------------------------------------------Delete------------------------------------------------
 
-  //----------------------------------------------Delete------------------------------------------------
-
-exports.deleteCompanyDetails = ((req, res, next)=>{
-  removeCompanyDetails().then(()=>{
-    res.sendStatus(204)
-  })
-  .catch((error)=>{
-    next(error);
-  })
-})
-
+exports.deleteCompanyDetails = (req, res, next) => {
+  removeCompanyDetails()
+    .then(() => {
+      res.sendStatus(204);
+    })
+    .catch((error) => {
+      next(error);
+    });
+};

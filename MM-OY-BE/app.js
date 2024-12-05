@@ -14,6 +14,7 @@ const {
   postSecondPageData,
   postReviewData,
   postContactDetails,
+  patchCompanyDetails,
   deleteCompanyDetails
 } = require("./controllers/api.controllers");
 
@@ -34,7 +35,9 @@ app.post("/api/secondPageData", postSecondPageData);
 app.post("/api/reviewData", postReviewData);
 app.post("/api/contactDetails", postContactDetails);
 
+//----------------------------------------------Patch-------------------------------------------------
 
+app.patch('/api/companyDetails', patchCompanyDetails)
 
 //----------------------------------------------Delete------------------------------------------------
 

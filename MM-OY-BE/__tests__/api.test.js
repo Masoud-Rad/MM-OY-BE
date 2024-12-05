@@ -306,6 +306,37 @@ describe("POST contactDetails", () => {
   });
 });
 
+describe("PATCH-CompanyDetails", () => {
+  test("PATCH - status: 200 - responds with the updated CompanyDetails", () => {
+    const newCompanyDetails = {
+      company_name: "MM-newName",
+      logo_url: "www.new-url.com",
+    };
+    return request(app)
+      .patch("/api/companyDetails")
+      .send(newCompanyDetails)
+      .expect(202)
+      .then(({ body }) => {
+        expect(body.updatedCompanyDetails.company_name).toBe("MM-newName");
+        expect(body.updatedCompanyDetails.logo_url).toBe("www.new-url.com");
+      });
+  });
+
+  test("PATCH - status: 200 - responds with the updated CompanyDetails", () => {
+    const newCompanyDetails = {
+      logo_url: "www.new-url.com",
+    };
+    return request(app)
+      .patch("/api/companyDetails")
+      .send(newCompanyDetails)
+      .expect(202)
+      .then(({ body }) => {
+        expect(body.updatedCompanyDetails.company_name).toBe("MM-onkeydown");
+        expect(body.updatedCompanyDetails.logo_url).toBe("www.new-url.com");
+      });
+  });
+});
+
 describe("DELETE Logo and Company Name", () => {
   test("DELETE -states: 204 , respond with no content", () => {
     return request(app)
