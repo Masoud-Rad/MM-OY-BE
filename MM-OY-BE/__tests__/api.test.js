@@ -306,6 +306,8 @@ describe("POST contactDetails", () => {
   });
 });
 
+//----------------------------------------Patch-------------------------
+
 describe("PATCH-CompanyDetails", () => {
   test("PATCH - status: 200 - responds with the updated CompanyDetails", () => {
     const newCompanyDetails = {
@@ -336,6 +338,77 @@ describe("PATCH-CompanyDetails", () => {
       });
   });
 });
+
+describe("PATCH-mainPageData", () => {
+  test("PATCH - status: 200 - responds with the updated mainPageData", () => {
+    const newMainPageData = {
+      title: "Our miOur mission is to help you move home.",
+      subtitle: "Any New Text.",
+      content:
+        "When it comes to helping you move your cherished belongings, we are there for you from pick up to delivery. You can enjoy a stress-free removal from start to finish. No job is too small or big for The Removal Man.",
+      main_url: "www.new-url.com",
+    };
+    return request(app)
+      .patch("/api/mainPageData")
+      .send(newMainPageData)
+      .expect(202)
+      .then(({ body }) => {
+        expect(body.updatedMainPageData.title).toBe(
+          "Our miOur mission is to help you move home."
+        );
+        expect(body.updatedMainPageData.subtitle).toBe("Any New Text.");
+        expect(body.updatedMainPageData.main_url).toBe("www.new-url.com");
+      });
+  });
+});
+
+describe("PATCH-secondPageData", () => {
+  test("PATCH - status: 200 - responds with the updated secondPageData", () => {
+    const newSecondPageData = {
+      title: "Our miOur mission is to help you move home.",
+      content: "new content",
+      second_url: "www.new-url.com",
+    };
+    return request(app)
+      .patch("/api/secondPageData")
+      .send(newSecondPageData)
+      .expect(202)
+      .then(({ body }) => {
+        expect(body.updatedSecondPageData.title).toBe(
+          "Our miOur mission is to help you move home."
+        );
+        expect(body.updatedSecondPageData.content).toBe("new content");
+        expect(body.updatedSecondPageData.second_url).toBe("www.new-url.com");
+      });
+  });
+});
+
+describe("PATCH-ContactDetails", () => {
+  test("PATCH - status: 200 - responds with the updated ContactDetails", () => {
+    const newContactDetails = {
+      "phone": "1111111111",
+      "landline":"0000000000",
+      "instagram":"newInsta",
+      "facebook":"FFFF",
+      "whatsapp":"NewWhatsapp",
+      "email": "mm_oy@gmail.com"
+      }
+    return request(app)
+    .patch("/api/contactDetails")
+    .send(newContactDetails)
+    .expect(202)
+    .then(({ body }) => {
+      expect(body.updatedContactDetails.phone).toBe("1111111111");
+      expect(body.updatedContactDetails.landline).toBe("0000000000");
+      expect(body.updatedContactDetails.instagram).toBe("newInsta");
+      expect(body.updatedContactDetails.facebook).toBe("FFFF");
+      expect(body.updatedContactDetails.whatsapp).toBe("NewWhatsapp");
+      expect(body.updatedContactDetails.email).toBe("mm_oy@gmail.com");
+    });
+  });
+});
+
+//----------------------------------------Delete-------------------------
 
 describe("DELETE Logo and Company Name", () => {
   test("DELETE -states: 204 , respond with no content", () => {

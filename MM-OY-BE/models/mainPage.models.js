@@ -61,3 +61,25 @@ exports.addMainPageData = (newData) => {
     return result.rows[0];
   });
 };
+
+
+exports.updateMainPageData = (update) => {
+  const { title, subtitle, content, main_url } = update;
+
+  // If no valid fields are provided, reject the request
+  if (!title && !subtitle && !content && !main_url) {
+    return Promise.reject({ status: 400, msg: "bad request!" });
+  }
+
+  // Build the final query
+  const query = `
+      UPDATE mainpage
+      SET title=$1, subtitle=$2, content=$3, main_url=$4
+      RETURNING *;
+    `;
+
+  // Execute the query with the collected values
+  return db.query(query, [title, subtitle, content, main_url]).then(({ rows }) => {
+    return rows[0];
+  });
+};

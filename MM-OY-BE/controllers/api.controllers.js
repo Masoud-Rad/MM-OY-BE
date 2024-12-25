@@ -7,15 +7,18 @@ const {
 const {
   selectMainPageData,
   addMainPageData,
+  updateMainPageData
 } = require("../models/mainPage.models");
 const {
   selectSecondPageData,
   addSecondPageData,
+  updateSecondPageData
 } = require("../models/secondPage.models");
 const { selectReviewData, addReviewData } = require("../models/reviews.models");
 const {
   selectContactDetails,
   addContactDetails,
+  updateContactDetails
 } = require("../models/contactDetails.models");
 //-------------------------Get---------------------------------------------------------
 
@@ -133,6 +136,39 @@ exports.patchCompanyDetails = (req, res, next) => {
   updateCompanyDetails(update)
     .then((updatedCompanyDetails) => {
       res.status(202).send({ updatedCompanyDetails });
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
+
+exports.patchMainPageData = (req, res, next) => {
+  const update = req.body;
+  updateMainPageData(update)
+    .then((updatedMainPageData) => {
+      res.status(202).send({ updatedMainPageData });
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
+
+exports.patchSecondPageData = (req, res, next) => {
+  const update = req.body;
+  updateSecondPageData(update)
+    .then((updatedSecondPageData) => {
+      res.status(202).send({ updatedSecondPageData });
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
+
+exports.patchContactDetails = (req, res, next) => {
+  const update = req.body;
+  updateContactDetails(update)
+    .then((updatedContactDetails) => {
+      res.status(202).send({ updatedContactDetails });
     })
     .catch((error) => {
       next(error);

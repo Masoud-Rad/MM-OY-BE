@@ -51,3 +51,20 @@ exports.addSecondPageData = (newData) => {
     return result.rows[0];
   });
 };
+
+exports.updateSecondPageData = (update) => {
+  const { title, content, second_url } = update;
+  if (title && content && second_url) {
+    return db
+      .query(
+        `
+        UPDATE secondpage
+        SET title=$1, content=$2, second_url=$3
+        RETURNING *;`,
+        [title, content, second_url]
+      )
+      .then((result) => {
+        return result.rows[0];
+      });
+  }
+};

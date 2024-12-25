@@ -15,7 +15,10 @@ const {
   postReviewData,
   postContactDetails,
   patchCompanyDetails,
-  deleteCompanyDetails
+  deleteCompanyDetails,
+  patchMainPageData, 
+  patchSecondPageData,
+  patchContactDetails
 } = require("./controllers/api.controllers");
 
 app.use(cors());
@@ -37,8 +40,10 @@ app.post("/api/contactDetails", postContactDetails);
 
 //----------------------------------------------Patch-------------------------------------------------
 
-app.patch('/api/companyDetails', patchCompanyDetails)
-
+app.patch('/api/companyDetails', patchCompanyDetails);
+app.patch('/api/mainPageData', patchMainPageData);
+app.patch('/api/secondPageData', patchSecondPageData);
+app.patch('/api/contactDetails', patchContactDetails);
 //----------------------------------------------Delete------------------------------------------------
 
 app.delete("/api/companyDetails", deleteCompanyDetails)

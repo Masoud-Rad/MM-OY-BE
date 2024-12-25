@@ -73,4 +73,21 @@ exports.addContactDetails= (newData) => {
 
 
 
+exports.updateContactDetails = (update) => {
+    const { phone, landline, instagram, facebook, whatsapp, email } = update;
+    if (!phone && !landline && !instagram && !facebook && !whatsapp && !email) {
+      return Promise.reject({ status: 400, msg: "bad request!" });
+    }
 
+    const query = `
+    UPDATE contact
+    SET phone=$1, landline=$2, instagram=$3, facebook=$4, whatsapp=$5, email=$6
+    RETURNING *;
+    `;  
+
+    return db.query(query, [phone, landline, instagram, facebook, whatsapp, email]).then(({ rows }) => {
+      return rows[0];
+    });
+  }
+
+      
