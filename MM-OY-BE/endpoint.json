@@ -1,0 +1,195 @@
+{
+  "GET /api/companyDetails": {
+    "description": "serves an array containing an object of Comapny name and logo url",
+    "queries": [],
+    "exampleResponse": [
+      {
+        "companyName": "MM-onkeydown",
+        "logoUrl": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.klipartz.com%2Fen%2Fsearch%3Fq%3Dlion%2BLogo&psig=AOvVaw3hrxp_xBcmp4qtJaUDKAic&ust=1730761304374000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJDrzb6iwYkDFQAAAAAdAAAAABBh"
+      }
+    ]
+  },
+  "GET /api/mainPageData": {
+    "description": "serves an array containing an object of manin page content",
+    "queries": [],
+    "exampleResponse": [
+      {
+        "title": "Our miOur mission is to help you move home.",
+        "subtitle": "Your belongings are in safe hands.",
+        "content": "When it comes to helping you move your cherished belongings, we are there for you from pick up to delivery. You can enjoy a stress-free removal from start to finish. No job is too small or big for The Removal Man.",
+        "url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.achievers.com%2Fblog%2Fbuilding-trust-workplace%2F&psig=AOvVaw2wqXJY6je_dlUQsO8OSUSG&ust=1730761892948000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjq5tykwYkDFQAAAAAdAAAAABAE"
+      }
+    ]
+  },
+  "GET /api/secondPageData": {
+    "description": "serves an array containing an object of second page content",
+    "queries": [],
+    "exampleResponse": [
+      {
+        "title": "Our miOur mission is to help you move home.",
+        "content": "Your belongings are in safe hands.",
+        "second_url ": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.achievers.com%2Fblog%2Fbuilding-trust-workplace%2F&psig=AOvVaw2wqXJY6je_dlUQsO8OSUSG&ust=1730761892948000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjq5tykwYkDFQAAAAAdAAAAABAE"
+      }
+    ]
+  },
+
+  "GET /api/reviewData": {
+    "description": "serves an array of all review objects",
+    "queries": [],
+    "exampleResponse": [
+      {
+        "body": "Itaque quisquam est similique et est perspiciatis reprehenderit voluptatem autem. Voluptatem accusantium eius error adipisci quibusdam doloribus.",
+        "name": "grumpy19",
+        "id": 1,
+        "created_at": "2018-05-30T15:59:13.341Z"
+      },
+      {
+        "body": "Itaque quisquam est similique et est perspiciatis reprehenderit voluptatem autem. Voluptatem accusantium eius error adipisci quibusdam doloribus.",
+        "name": "cooljmessy",
+        "id": 2,
+        "created_at": "2018-05-30T15:59:13.341Z"
+      },
+      {
+        "body": "Itaque quisquam est similique et est perspiciatis reprehenderit voluptatem autem. Voluptatem accusantium eius error adipisci quibusdam doloribus.",
+        "name": "cooljmessy",
+        "id": 3,
+        "created_at": "2018-05-30T15:59:13.341Z"
+      },
+      {
+        "body": "Itaque quisquam est similique et est perspiciatis reprehenderit voluptatem autem. Voluptatem accusantium eius error adipisci quibusdam doloribus.",
+        "name": "happyamy2016",
+        "id": 4,
+        "created_at": "2018-05-30T15:59:13.341Z"
+      }
+    ]
+  },
+
+  "GET /api/contactDetails": {
+    "description": "serves an array containing an object of contact details",
+    "queries": [],
+    "exampleResponse": [
+      {
+        "Phone": "00350000000000",
+      "landline":"0000000000",
+      "instagram":"iiiii",
+      "facebook":"FFFF",
+      "whatsapp":"WWWW",
+      "email": "mm_oy@gmail.com"
+      }
+    ]
+  },
+
+  "Post /api/companyDetails": {
+    "description": "Post a logo",
+    "parametr": [],
+    "exampleResponse": [
+      {
+        "company_name": "MM-newName",
+        "logo_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.klipartz.com%2Fen%2Fsearch%3Fq%3Dlion%2BLogo&psig=AOvVaw3hrxp_xBcmp4qtJaUDKAic&ust=1730761304374000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJDrzb6iwYkDFQAAAAAdAAAAABBh"
+      }
+    ]
+  },
+  
+  "Post /api/mainPageData": {
+    "description": "Post mainPageData",
+    "parametr": [],
+    "exampleResponse": [
+      {
+        "title": "Our miOur mission is to help you move home.",
+        "subtitle": "Your belongings are in safe hands.",
+        "content": "When it comes to helping you move your cherished belongings, we are there for you from pick up to delivery. You can enjoy a stress-free removal from start to finish. No job is too small or big for The Removal Man.",
+        "main_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.achievers.com%2Fblog%2Fbuilding-trust-workplace%2F&psig=AOvVaw2wqXJY6je_dlUQsO8OSUSG&ust=1730761892948000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjq5tykwYkDFQAAAAAdAAAAABAE"
+      }
+    ]
+  },
+  "Post /api/secondPageData": {
+    "description": "Post secondPageData",
+    "parametr": [],
+    "exampleResponse": [
+      {
+        "title": "Our miOur mission is to help you move home.",
+        "content": "Your belongings are in safe hands.",
+        "second_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.achievers.com%2Fblog%2Fbuilding-trust-workplace%2F&psig=AOvVaw2wqXJY6je_dlUQsO8OSUSG&ust=1730761892948000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjq5tykwYkDFQAAAAAdAAAAABAE"
+      }
+    ]
+  },
+  "Post /api/reviewData": {
+    "description": "Post a review",
+    "parametr": [],
+    "exampleResponse": {
+      "body": "Itaque quisquam est similique et est perspiciatis reprehenderit voluptatem autem. Voluptatem accusantium eius error adipisci quibusdam doloribus.",
+      "name": "grumpy19",
+      "id": 1,
+      "created_at": "2018-05-30T15:59:13.341Z"
+    }
+  },
+
+  "Post /api/contactDetails": {
+    "description": "Post contactDetails",
+    "parametr": [],
+    "exampleResponse": {
+      "phone": "00350000000000",
+      "email": "mm_oy@gmail.com"
+    }
+  },
+
+  "Patch /api/companyDetails":{
+    "description": "Update companyDetails",
+    "parametr":[],
+    "exampleResponse": [
+      {
+        "company_name": "MM-newName",
+        "logo_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.klipartz.com%2Fen%2Fsearch%3Fq%3Dlion%2BLogo&psig=AOvVaw3hrxp_xBcmp4qtJaUDKAic&ust=1730761304374000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJDrzb6iwYkDFQAAAAAdAAAAABBh"
+      }
+    ]
+
+  },
+
+  "Patch /api/mainPageData":{
+    "description": "Update mainPageData",
+    "parametr":[],
+    "exampleResponse": [
+      {
+        "title": "Our miOur mission is to help you move home.",
+        "subtitle": "Your belongings are in safe hands.",
+        "content": "When it comes to helping you move your cherished belongings, we are there for you from pick up to delivery. You can enjoy a stress-free removal from start to finish. No job is too small or big for The Removal Man.",
+        "main_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.achievers.com%2Fblog%2Fbuilding-trust-workplace%2F&psig=AOvVaw2wqXJY6je_dlUQsO8OSUSG&ust=1730761892948000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjq5tykwYkDFQAAAAAdAAAAABAE"
+      }
+    ]
+
+  },
+
+  "Patch /api/secondPageData":{
+    "description": "Update secondPageData",
+    "parametr":[],
+    "exampleResponse": [
+      {
+        "title": "Our miOur mission is to help you move home.",
+        "content": "Your belongings are in safe hands.",
+        "second_url ": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.achievers.com%2Fblog%2Fbuilding-trust-workplace%2F&psig=AOvVaw2wqXJY6je_dlUQsO8OSUSG&ust=1730761892948000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjq5tykwYkDFQAAAAAdAAAAABAE"
+      }
+    ]
+
+  },
+  
+  "PATCH /api/contactDetails": {
+    "description": "Update contact details",
+    "queries": [],
+    "exampleResponse": [
+      {
+      "Phone": "00350000000000",
+      "landline":"0000000000",
+      "instagram":"iiiii",
+      "facebook":"FFFF",
+      "whatsapp":"WWWW",
+      "email": "mm_oy@gmail.com"
+      }
+    ]
+  },
+  
+  "Delete /api/companyDetails": {},
+  "Delete /api/mainPageData": {},
+  "Delete /api/secondPageData": {},
+  "Delete /api/creviewData": {},
+  "Delete /api/contactDetails": {}
+}
