@@ -1,9 +1,17 @@
 const format = require("pg-format");
 const db = require("../connection");
 
-const seed = ({ logo, mainPage, secondPage, review, contactDetails }) => {
+const seed = ({
+  logo,
+  mainPage,
+  secondPage,
+  review,
+  contactDetails,
+  about,
+}) => {
   return db
     .query(`DROP TABLE IF EXISTS contact;`)
+    .then(() => db.query(`DROP TABLE IF EXISTS about;`))
     .then(() => db.query(`DROP TABLE IF EXISTS review;`))
     .then(() => db.query(`DROP TABLE IF EXISTS secondpage;`))
     .then(() => db.query(`DROP TABLE IF EXISTS mainpage;`))
@@ -55,6 +63,13 @@ const seed = ({ logo, mainPage, secondPage, review, contactDetails }) => {
                     whatsapp VARCHAR,
                     email VARCHAR
                 ); 
+            `);
+    })
+    .then(() => {
+      return db.query(`
+                CREATE TABLE about (  
+                    content VARCHAR
+                );
             `);
     })
     .then(() => {
@@ -123,6 +138,16 @@ const seed = ({ logo, mainPage, secondPage, review, contactDetails }) => {
       );
 
       return db.query(insertContactDetailsQuery); // Added missing return
+    })
+    .then(() => {
+      const insertAboutQuery = format(
+        `
+                INSERT INTO about (content)
+                VALUES (%L)`,
+        about[0].content
+      );
+
+      return db.query(insertAboutQuery);
     })
     .catch((err) => {
       console.error("Error in seed", err);

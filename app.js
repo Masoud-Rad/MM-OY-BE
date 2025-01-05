@@ -9,16 +9,19 @@ const {
   getSecondPageData,
   getReviewData,
   getContactDetails,
+  getAboutData,
   postCompanyDetails,
   postMainPageData,
   postSecondPageData,
   postReviewData,
   postContactDetails,
+  postAboutData,
   patchCompanyDetails,
-  deleteCompanyDetails,
-  patchMainPageData, 
+  patchMainPageData,
   patchSecondPageData,
-  patchContactDetails
+  patchContactDetails,
+  patchAboutData,
+  deleteCompanyDetails,
 } = require("./controllers/api.controllers");
 
 app.use(cors());
@@ -29,6 +32,7 @@ app.get("/api/mainPageData", getMainPageData);
 app.get("/api/secondPageData", getSecondPageData);
 app.get("/api/reviewData", getReviewData);
 app.get("/api/contactDetails", getContactDetails);
+app.get("/api/about", getAboutData);
 
 //----------------------------------------------Post-------------------------------------------------
 
@@ -37,17 +41,18 @@ app.post("/api/mainPageData", postMainPageData);
 app.post("/api/secondPageData", postSecondPageData);
 app.post("/api/reviewData", postReviewData);
 app.post("/api/contactDetails", postContactDetails);
+app.post("/api/about", postAboutData);
 
 //----------------------------------------------Patch-------------------------------------------------
 
-app.patch('/api/companyDetails', patchCompanyDetails);
-app.patch('/api/mainPageData', patchMainPageData);
-app.patch('/api/secondPageData', patchSecondPageData);
-app.patch('/api/contactDetails', patchContactDetails);
+app.patch("/api/companyDetails", patchCompanyDetails);
+app.patch("/api/mainPageData", patchMainPageData);
+app.patch("/api/secondPageData", patchSecondPageData);
+app.patch("/api/contactDetails", patchContactDetails);
+app.patch("/api/about", patchAboutData);
 //----------------------------------------------Delete------------------------------------------------
 
-app.delete("/api/companyDetails", deleteCompanyDetails)
-
+app.delete("/api/companyDetails", deleteCompanyDetails);
 
 //----------------------------------------------Error handeling---------------------------------------
 

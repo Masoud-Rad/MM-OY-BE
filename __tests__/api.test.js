@@ -53,6 +53,19 @@ describe("Getting mainPageData", () => {
   });
 });
 
+describe("Getting about the company's data", () => {
+  test("GET - status: 200 - respond with the content of abouth the company", () => {
+    return request(app)
+      .get("/api/about")
+      .expect(200)
+      .then((response) => {
+        const result = response.body.about[0];
+        expect(typeof result).toBe("object");
+        expect(result.hasOwnProperty("content")).toBe(true);
+      });
+  });
+});
+
 describe("Getting seconPageData", () => {
   test("GET - status: 200 - respond with an abject containing secondPageData", () => {
     return request(app)
@@ -149,6 +162,22 @@ describe("POST- companyDetails", () => {
       .expect(400)
       .then(({ body }) => {
         expect(body.msg).toBe("bad request!");
+      });
+  });
+});
+
+describe("POST- about the company", () => {
+  test("POST- status: 201- responds with the New about content", () => {
+    const newAboutInfo = {
+      content: "about the company",
+    };
+    return request(app)
+      .post("/api/about")
+      .send(newAboutInfo)
+      .expect(201)
+      .then(({ body }) => {
+        expect(Object.keys(body.about).length).toBe(1);
+        expect(body.about.content).toBe("about the company");
       });
   });
 });
@@ -383,28 +412,43 @@ describe("PATCH-secondPageData", () => {
   });
 });
 
+describe("PATCH-about the company", () => {
+  test("PATCH - status: 200 - responds with the updated information", () => {
+    const newAboutData = {
+      content: "new content",
+    };
+    return request(app)
+      .patch("/api/about")
+      .send(newAboutData)
+      .expect(202)
+      .then(({ body }) => {
+        expect(body.updatedAboutData.content).toBe("new content");
+      });
+  });
+});
+
 describe("PATCH-ContactDetails", () => {
   test("PATCH - status: 200 - responds with the updated ContactDetails", () => {
     const newContactDetails = {
-      "phone": "1111111111",
-      "landline":"0000000000",
-      "instagram":"newInsta",
-      "facebook":"FFFF",
-      "whatsapp":"NewWhatsapp",
-      "email": "mm_oy@gmail.com"
-      }
+      phone: "1111111111",
+      landline: "0000000000",
+      instagram: "newInsta",
+      facebook: "FFFF",
+      whatsapp: "NewWhatsapp",
+      email: "mm_oy@gmail.com",
+    };
     return request(app)
-    .patch("/api/contactDetails")
-    .send(newContactDetails)
-    .expect(202)
-    .then(({ body }) => {
-      expect(body.updatedContactDetails.phone).toBe("1111111111");
-      expect(body.updatedContactDetails.landline).toBe("0000000000");
-      expect(body.updatedContactDetails.instagram).toBe("newInsta");
-      expect(body.updatedContactDetails.facebook).toBe("FFFF");
-      expect(body.updatedContactDetails.whatsapp).toBe("NewWhatsapp");
-      expect(body.updatedContactDetails.email).toBe("mm_oy@gmail.com");
-    });
+      .patch("/api/contactDetails")
+      .send(newContactDetails)
+      .expect(202)
+      .then(({ body }) => {
+        expect(body.updatedContactDetails.phone).toBe("1111111111");
+        expect(body.updatedContactDetails.landline).toBe("0000000000");
+        expect(body.updatedContactDetails.instagram).toBe("newInsta");
+        expect(body.updatedContactDetails.facebook).toBe("FFFF");
+        expect(body.updatedContactDetails.whatsapp).toBe("NewWhatsapp");
+        expect(body.updatedContactDetails.email).toBe("mm_oy@gmail.com");
+      });
   });
 });
 

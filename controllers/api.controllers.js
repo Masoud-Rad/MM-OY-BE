@@ -7,19 +7,25 @@ const {
 const {
   selectMainPageData,
   addMainPageData,
-  updateMainPageData
+  updateMainPageData,
 } = require("../models/mainPage.models");
 const {
   selectSecondPageData,
   addSecondPageData,
-  updateSecondPageData
+  updateSecondPageData,
 } = require("../models/secondPage.models");
 const { selectReviewData, addReviewData } = require("../models/reviews.models");
 const {
   selectContactDetails,
   addContactDetails,
-  updateContactDetails
+  updateContactDetails,
 } = require("../models/contactDetails.models");
+
+const {
+  selectAboutData,
+  addAboutData,
+  updateAboutData,
+} = require("../models/about.models");
 //-------------------------Get---------------------------------------------------------
 
 exports.getCompanyDetails = (req, res, next) => {
@@ -66,6 +72,16 @@ exports.getContactDetails = (req, res, next) => {
   selectContactDetails()
     .then((data) => {
       res.status(200).send({ contactDetails: data });
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+
+exports.getAboutData = (req, res, next) => {
+  selectAboutData()
+    .then((data) => {
+      res.status(200).send({ about: data });
     })
     .catch((err) => {
       next(err);
@@ -129,6 +145,17 @@ exports.postContactDetails = (req, res, next) => {
     });
 };
 
+exports.postAboutData = (req, res, next) => {
+  const newAboutData = req.body;
+  addAboutData(newAboutData)
+    .then((data) => {
+      res.status(201).send({ about: data });
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
+
 //----------------------------------------------Patch-------------------------------------------------
 
 exports.patchCompanyDetails = (req, res, next) => {
@@ -169,6 +196,17 @@ exports.patchContactDetails = (req, res, next) => {
   updateContactDetails(update)
     .then((updatedContactDetails) => {
       res.status(202).send({ updatedContactDetails });
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
+
+exports.patchAboutData = (req, res, next) => {
+  const update = req.body;
+  updateAboutData(update)
+    .then((updatedAboutData) => {
+      res.status(202).send({ updatedAboutData });
     })
     .catch((error) => {
       next(error);
