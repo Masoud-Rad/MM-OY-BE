@@ -102,7 +102,7 @@ exports.postCompanyDetails = (req, res, next) => {
 };
 
 exports.postMainPageData = (req, res, next) => {
-  const newMainPageData = req.body;
+  const newMainPageData = req.body; 
   addMainPageData(newMainPageData)
     .then((data) => {
       res.status(201).send({ mainPageData: data });

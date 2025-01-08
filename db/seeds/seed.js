@@ -30,7 +30,8 @@ const seed = ({
                     title VARCHAR, 
                     subtitle VARCHAR,
                     content VARCHAR,
-                    main_url VARCHAR
+                    main_url VARCHAR,
+                    second_url VARCHAR
                 );
             `);
     })
@@ -68,7 +69,9 @@ const seed = ({
     .then(() => {
       return db.query(`
                 CREATE TABLE about (  
-                    content VARCHAR
+                    content VARCHAR,
+                    url1 VARCHAR,
+                    url2 VARCHAR
                 );
             `);
     })
@@ -86,12 +89,13 @@ const seed = ({
     .then(() => {
       const insertMainpageQuery = format(
         `
-                INSERT INTO mainpage (title, subtitle, content, main_url) 
-                VALUES (%L, %L, %L, %L)`,
+                INSERT INTO mainpage (title, subtitle, content, main_url, second_url) 
+                VALUES (%L, %L, %L, %L, %L)`,
         mainPage[0].title,
         mainPage[0].subtitle,
         mainPage[0].content,
-        mainPage[0].main_url
+        mainPage[0].main_url,
+        mainPage[0].second_url
       );
 
       return db.query(insertMainpageQuery);
@@ -142,9 +146,11 @@ const seed = ({
     .then(() => {
       const insertAboutQuery = format(
         `
-                INSERT INTO about (content)
-                VALUES (%L)`,
-        about[0].content
+                INSERT INTO about (content, url1, url2) 
+                VALUES (%L, %L, %L)`,
+        about[0].content,
+        about[0].url1,
+        about[0].url2
       );
 
       return db.query(insertAboutQuery);

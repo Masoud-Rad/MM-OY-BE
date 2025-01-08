@@ -5,6 +5,7 @@ const seed = require("../db/seeds/seed");
 
 const devData = require("../db/data/test-data/index");
 const { expect, describe, test } = require("@jest/globals");
+const e = require("cors");
 
 beforeEach(() => seed(devData));
 afterAll(() => connection.end());
@@ -49,6 +50,7 @@ describe("Getting mainPageData", () => {
         expect(result.hasOwnProperty("subtitle")).toBe(true);
         expect(result.hasOwnProperty("content")).toBe(true);
         expect(result.hasOwnProperty("main_url")).toBe(true);
+        expect(result.hasOwnProperty("second_url")).toBe(true);
       });
   });
 });
@@ -62,6 +64,8 @@ describe("Getting about the company's data", () => {
         const result = response.body.about[0];
         expect(typeof result).toBe("object");
         expect(result.hasOwnProperty("content")).toBe(true);
+        expect(result.hasOwnProperty("url1")).toBe(true);
+        expect(result.hasOwnProperty("url2")).toBe(true);
       });
   });
 });
@@ -170,14 +174,18 @@ describe("POST- about the company", () => {
   test("POST- status: 201- responds with the New about content", () => {
     const newAboutInfo = {
       content: "about the company",
+      url1: "www.New-link1.com",
+      url2: "www.New-link2.com",
     };
     return request(app)
       .post("/api/about")
       .send(newAboutInfo)
       .expect(201)
-      .then(({ body }) => {
-        expect(Object.keys(body.about).length).toBe(1);
+      .then(({ body }) => { 
+        expect(Object.keys(body.about).length).toBe(3);
         expect(body.about.content).toBe("about the company");
+        expect(body.about.url1).toBe("www.New-link1.com");
+        expect(body.about.url2).toBe("www.New-link2.com");
       });
   });
 });
@@ -189,18 +197,20 @@ describe("POST mainPageData", () => {
       subtitle: "MainPageSubtitle",
       content:
         "Even my hjkb fkjehbwkjfbwe feoufhewhve your cherished belongings, we are there for you from pick up to delivery. You can enjoy a stress-free removal from start to finish. No job is too small or big for The Removal Man.",
-      url: "www.New-link.com",
+      main_url: "www.New-link1.com",
+      second_url: "www.New-link2.com",
     };
     return request(app)
       .post("/api/mainPageData")
       .send(newMainPageData)
       .expect(201)
-      .then(({ body }) => {
-        expect(Object.keys(body.mainPageData).length).toBe(4);
+      .then(({ body }) => { 
+        expect(Object.keys(body.mainPageData).length).toBe(5);
         expect(body.mainPageData.title).toBe("MainPageTitle");
         expect(body.mainPageData.subtitle).toBe("MainPageSubtitle");
         expect(body.mainPageData.hasOwnProperty("content")).toBe(true);
         expect(body.mainPageData.hasOwnProperty("main_url")).toBe(true);
+        expect(body.mainPageData.hasOwnProperty("second_url")).toBe(true);
       });
   });
 
@@ -208,14 +218,14 @@ describe("POST mainPageData", () => {
     const newMainPageData = {
       title: "MainPageTitle",
       subtitle: "MainPageSubtitle",
-      url: "www.New-link.com",
+      main_url: "www.New-link.com",
     };
     return request(app)
       .post("/api/mainPageData")
       .send(newMainPageData)
       .expect(201)
       .then(({ body }) => {
-        expect(Object.keys(body.mainPageData).length).toBe(4);
+        expect(Object.keys(body.mainPageData).length).toBe(5);
         expect(body.mainPageData.title).toBe("MainPageTitle");
         expect(body.mainPageData.subtitle).toBe("MainPageSubtitle");
         expect(body.mainPageData.content).toBe(null);
