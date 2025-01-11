@@ -56,7 +56,7 @@ describe("Getting mainPageData", () => {
 });
 
 describe("Getting about the company's data", () => {
-  test("GET - status: 200 - respond with the content of abouth the company", () => {
+  test("GET - status: 200 - respond with the content of about the company", () => {
     return request(app)
       .get("/api/about")
       .expect(200)
@@ -66,6 +66,20 @@ describe("Getting about the company's data", () => {
         expect(result.hasOwnProperty("content")).toBe(true);
         expect(result.hasOwnProperty("url1")).toBe(true);
         expect(result.hasOwnProperty("url2")).toBe(true);
+      });
+  });
+});
+
+describe("Getting company's values", () => {
+  test("GET - status: 200 - respond with the content of valus", () => {
+    return request(app)
+      .get("/api/value")
+      .expect(200)
+      .then((response) => { 
+        const result = response.body.value[0];
+        expect(typeof result).toBe("object");
+        expect(result.hasOwnProperty("content")).toBe(true);
+        expect(result.hasOwnProperty("url")).toBe(true);
       });
   });
 });
@@ -345,6 +359,23 @@ describe("POST contactDetails", () => {
   });
 });
 
+describe("POST- company's values", () => {
+  test("POST- status: 201- responds with the New company's values", () => {
+    const newValuesInfo = {
+      content: "value the company",
+      url: "www.New-link.com"
+    };
+    return request(app)
+      .post("/api/value")
+      .send(newValuesInfo)
+      .expect(201)
+      .then(({ body }) => { 
+        expect(Object.keys(body.value).length).toBe(2);
+        expect(body.value.content).toBe("value the company");
+        expect(body.value.url).toBe("www.New-link.com");
+      });
+  });
+});
 //----------------------------------------Patch-------------------------
 
 describe("PATCH-CompanyDetails", () => {
@@ -462,6 +493,20 @@ describe("PATCH-ContactDetails", () => {
   });
 });
 
+describe("PATCH- Values", () => {
+  test("PATCH - status: 200 - responds with the updated values", () => {
+    const newValuesData = {
+      content: "new content",
+    };
+    return request(app)
+      .patch("/api/value")
+      .send(newValuesData)
+      .expect(202)
+      .then(({ body }) => {
+        expect(body.updatedValueData.content).toBe("new content");
+      });
+  });
+});
 //----------------------------------------Delete-------------------------
 
 describe("DELETE Logo and Company Name", () => {

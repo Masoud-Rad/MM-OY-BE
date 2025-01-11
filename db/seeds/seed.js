@@ -8,6 +8,7 @@ const seed = ({
   review,
   contactDetails,
   about,
+  values
 }) => {
   return db
     .query(`DROP TABLE IF EXISTS contact;`)
@@ -16,6 +17,7 @@ const seed = ({
     .then(() => db.query(`DROP TABLE IF EXISTS secondpage;`))
     .then(() => db.query(`DROP TABLE IF EXISTS mainpage;`))
     .then(() => db.query(`DROP TABLE IF EXISTS logo;`))
+    .then(() => db.query(`DROP TABLE IF EXISTS value;`))
     .then(() => {
       return db.query(`
                 CREATE TABLE logo (
@@ -72,6 +74,14 @@ const seed = ({
                     content VARCHAR,
                     url1 VARCHAR,
                     url2 VARCHAR
+                );
+            `);
+    })
+    .then(() => {
+      return db.query(`
+                CREATE TABLE value (
+                    content VARCHAR,
+                    url VARCHAR
                 );
             `);
     })
@@ -155,6 +165,17 @@ const seed = ({
 
       return db.query(insertAboutQuery);
     })
+    .then(() => {
+      const insertValuesQuery = format(
+        `
+          INSERT INTO value (content, url) 
+          VALUES (%L, %L)`,
+        values[0].content,
+        values[0].url
+      );
+
+      return db.query(insertValuesQuery);
+    })  
     .catch((err) => {
       console.error("Error in seed", err);
     });

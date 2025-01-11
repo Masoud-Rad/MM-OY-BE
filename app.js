@@ -10,17 +10,20 @@ const {
   getReviewData,
   getContactDetails,
   getAboutData,
+  getValueData,
   postCompanyDetails,
   postMainPageData,
   postSecondPageData,
   postReviewData,
   postContactDetails,
   postAboutData,
+  postValueData,
   patchCompanyDetails,
   patchMainPageData,
   patchSecondPageData,
   patchContactDetails,
   patchAboutData,
+  patchValueData,
   deleteCompanyDetails,
 } = require("./controllers/api.controllers");
 
@@ -33,6 +36,7 @@ app.get("/api/secondPageData", getSecondPageData);
 app.get("/api/reviewData", getReviewData);
 app.get("/api/contactDetails", getContactDetails);
 app.get("/api/about", getAboutData);
+app.get("/api/value", getValueData);
 
 //----------------------------------------------Post-------------------------------------------------
 
@@ -42,6 +46,7 @@ app.post("/api/secondPageData", postSecondPageData);
 app.post("/api/reviewData", postReviewData);
 app.post("/api/contactDetails", postContactDetails);
 app.post("/api/about", postAboutData);
+app.post("/api/value", postValueData);
 
 //----------------------------------------------Patch-------------------------------------------------
 
@@ -50,6 +55,7 @@ app.patch("/api/mainPageData", patchMainPageData);
 app.patch("/api/secondPageData", patchSecondPageData);
 app.patch("/api/contactDetails", patchContactDetails);
 app.patch("/api/about", patchAboutData);
+app.patch("/api/value", patchValueData);
 //----------------------------------------------Delete------------------------------------------------
 
 app.delete("/api/companyDetails", deleteCompanyDetails);

@@ -26,6 +26,12 @@ const {
   addAboutData,
   updateAboutData,
 } = require("../models/about.models");
+
+const {
+  selectValueData,
+  addValueData,
+  updateValueData,
+} = require("../models/values.models");
 //-------------------------Get---------------------------------------------------------
 
 exports.getCompanyDetails = (req, res, next) => {
@@ -88,6 +94,16 @@ exports.getAboutData = (req, res, next) => {
     });
 };
 
+exports.getValueData = (req, res, next) => {
+  selectValueData()
+    .then((data) => {
+      res.status(200).send({ value: data });
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+
 //----------------------------Post-----------------------------------
 
 exports.postCompanyDetails = (req, res, next) => {
@@ -102,7 +118,7 @@ exports.postCompanyDetails = (req, res, next) => {
 };
 
 exports.postMainPageData = (req, res, next) => {
-  const newMainPageData = req.body; 
+  const newMainPageData = req.body;
   addMainPageData(newMainPageData)
     .then((data) => {
       res.status(201).send({ mainPageData: data });
@@ -150,6 +166,17 @@ exports.postAboutData = (req, res, next) => {
   addAboutData(newAboutData)
     .then((data) => {
       res.status(201).send({ about: data });
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
+
+exports.postValueData = (req, res, next) => {
+  const newValueData = req.body;
+  addValueData(newValueData)
+    .then((data) => {
+      res.status(201).send({ value: data });
     })
     .catch((error) => {
       next(error);
@@ -213,6 +240,16 @@ exports.patchAboutData = (req, res, next) => {
     });
 };
 
+exports.patchValueData = (req, res, next) => {
+  const update = req.body;
+  updateValueData(update)
+    .then((updatedValueData) => {
+      res.status(202).send({ updatedValueData });
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
 //----------------------------------------------Delete------------------------------------------------
 
 exports.deleteCompanyDetails = (req, res, next) => {
