@@ -29,7 +29,8 @@ const seed = ({
     .then(() => {
       return db.query(`
                 CREATE TABLE mainpage (
-                    title VARCHAR, 
+                    title1 VARCHAR, 
+                    title2 VARCHAR,
                     subtitle VARCHAR,
                     content VARCHAR,
                     main_url VARCHAR,
@@ -99,9 +100,10 @@ const seed = ({
     .then(() => {
       const insertMainpageQuery = format(
         `
-                INSERT INTO mainpage (title, subtitle, content, main_url, second_url) 
-                VALUES (%L, %L, %L, %L, %L)`,
-        mainPage[0].title,
+                INSERT INTO mainpage (title1, title2, subtitle, content, main_url, second_url) 
+                VALUES (%L, %L, %L, %L, %L, %L)`,
+        mainPage[0].title1,
+        mainPage[0].title2,
         mainPage[0].subtitle,
         mainPage[0].content,
         mainPage[0].main_url,

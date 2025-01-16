@@ -43,10 +43,11 @@ describe("Getting mainPageData", () => {
     return request(app)
       .get("/api/mainPageData")
       .expect(200)
-      .then((response) => { 
+      .then((response) => {
         const result = response.body.mainPageData[0];
         expect(typeof result).toBe("object");
-        expect(result.hasOwnProperty("title")).toBe(true);
+        expect(result.hasOwnProperty("title1")).toBe(true);
+        expect(result.hasOwnProperty("title2")).toBe(true);
         expect(result.hasOwnProperty("subtitle")).toBe(true);
         expect(result.hasOwnProperty("content")).toBe(true);
         expect(result.hasOwnProperty("main_url")).toBe(true);
@@ -207,7 +208,8 @@ describe("POST- about the company", () => {
 describe("POST mainPageData", () => {
   test("POST- status: 201- responds with Main Page's Data", () => {
     const newMainPageData = {
-      title: "MainPageTitle",
+      title1: "MainPageTitle",
+      title2: "MainPageTitle2",
       subtitle: "MainPageSubtitle",
       content:
         "Even my hjkb fkjehbwkjfbwe feoufhewhve your cherished belongings, we are there for you from pick up to delivery. You can enjoy a stress-free removal from start to finish. No job is too small or big for The Removal Man.",
@@ -219,8 +221,9 @@ describe("POST mainPageData", () => {
       .send(newMainPageData)
       .expect(201)
       .then(({ body }) => { 
-        expect(Object.keys(body.mainPageData).length).toBe(5);
-        expect(body.mainPageData.title).toBe("MainPageTitle");
+        expect(Object.keys(body.mainPageData).length).toBe(6);
+        expect(body.mainPageData.title1).toBe("MainPageTitle");
+        expect(body.mainPageData.title2).toBe("MainPageTitle2");
         expect(body.mainPageData.subtitle).toBe("MainPageSubtitle");
         expect(body.mainPageData.hasOwnProperty("content")).toBe(true);
         expect(body.mainPageData.hasOwnProperty("main_url")).toBe(true);
@@ -230,7 +233,7 @@ describe("POST mainPageData", () => {
 
   test("POST- status: 201- responds with Main Page's Data", () => {
     const newMainPageData = {
-      title: "MainPageTitle",
+      title1: "MainPageTitle",
       subtitle: "MainPageSubtitle",
       main_url: "www.New-link.com",
     };
@@ -239,12 +242,13 @@ describe("POST mainPageData", () => {
       .send(newMainPageData)
       .expect(201)
       .then(({ body }) => {
-        expect(Object.keys(body.mainPageData).length).toBe(5);
-        expect(body.mainPageData.title).toBe("MainPageTitle");
+        expect(Object.keys(body.mainPageData).length).toBe(6);
+        expect(body.mainPageData.title1).toBe("MainPageTitle");
         expect(body.mainPageData.subtitle).toBe("MainPageSubtitle");
         expect(body.mainPageData.content).toBe(null);
         expect(body.mainPageData.hasOwnProperty("content")).toBe(true);
         expect(body.mainPageData.hasOwnProperty("main_url")).toBe(true);
+        expect(body.mainPageData.hasOwnProperty("title2")).toBe(true);
       });
   });
 });
@@ -412,7 +416,7 @@ describe("PATCH-CompanyDetails", () => {
 describe("PATCH-mainPageData", () => {
   test("PATCH - status: 200 - responds with the updated mainPageData", () => {
     const newMainPageData = {
-      title: "Our miOur mission is to help you move home.",
+      title1: "Our miOur mission is to help you move home.",
       subtitle: "Any New Text.",
       content:
         "When it comes to helping you move your cherished belongings, we are there for you from pick up to delivery. You can enjoy a stress-free removal from start to finish. No job is too small or big for The Removal Man.",
@@ -423,7 +427,7 @@ describe("PATCH-mainPageData", () => {
       .send(newMainPageData)
       .expect(202)
       .then(({ body }) => {
-        expect(body.updatedMainPageData.title).toBe(
+        expect(body.updatedMainPageData.title1).toBe(
           "Our miOur mission is to help you move home."
         );
         expect(body.updatedMainPageData.subtitle).toBe("Any New Text.");

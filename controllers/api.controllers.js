@@ -32,7 +32,7 @@ const {
   addValueData,
   updateValueData,
 } = require("../models/values.models");
-//-------------------------Get---------------------------------------------------------
+//------------------------------------Get--------------------------------------------
 
 exports.getCompanyDetails = (req, res, next) => {
   selectCompanyDetails()

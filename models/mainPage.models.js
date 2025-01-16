@@ -13,19 +13,25 @@ exports.selectMainPageData = () => {
 };
 
 exports.addMainPageData = (newData) => {
-  const { title, subtitle, content, main_url, second_url } = newData;
+  const { title1, title2, subtitle, content, main_url, second_url } = newData;
 
   // Create arrays to dynamically build the query
   const fields = [];
   const values = [];
   const placeholders = [];
 
-  if (title) {
-    fields.push("title");
-    values.push(title);
+  if (title1) {
+    fields.push("title1");
+    values.push(title1);
     placeholders.push(`$${values.length}`);
   }
 
+  if (title2) {
+    fields.push("title2");
+    values.push(title2);
+    placeholders.push(`$${values.length}`);
+  }
+  
   if (subtitle) {
     fields.push("subtitle");
     values.push(subtitle);
@@ -70,22 +76,19 @@ exports.addMainPageData = (newData) => {
 
 
 exports.updateMainPageData = (update) => {
-  const { title, subtitle, content, main_url, second_url } = update;
+  const { title1, title2, subtitle, content, main_url, second_url } = update;
 
-  // If no valid fields are provided, reject the request
-  if (!title && !subtitle && !content && !main_url && !second_url) {
-    return Promise.reject({ status: 400, msg: "bad request!" });
-  }
+ 
 
   // Build the final query
   const query = `
       UPDATE mainpage
-      SET title=$1, subtitle=$2, content=$3, main_url=$4, second_url=$5
+      SET title1=$1, title2=$2, subtitle=$3, content=$4, main_url=$5, second_url=$6
       RETURNING *;
     `;
 
   // Execute the query with the collected values
-  return db.query(query, [title, subtitle, content, main_url, second_url]).then(({ rows }) => { 
+  return db.query(query, [title1, title2, subtitle, content, main_url, second_url]).then(({ rows }) => { 
     return rows[0];
   });
 };
