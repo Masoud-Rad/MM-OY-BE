@@ -43,7 +43,7 @@ describe("Getting mainPageData", () => {
     return request(app)
       .get("/api/mainPageData")
       .expect(200)
-      .then((response) => {
+      .then((response) => { console.log(response.body.mainPageData[0]);
         const result = response.body.mainPageData[0];
         expect(typeof result).toBe("object");
         expect(result.hasOwnProperty("title")).toBe(true);
