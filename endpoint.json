@@ -1,6 +1,6 @@
 {
   "GET /api/companyDetails": {
-    "description": "serves an array containing an object of Comapny name and logo url",
+    "description": "Serves an array containing an object of company name and logo URL",
     "queries": [],
     "exampleResponse": [
       {
@@ -10,11 +10,11 @@
     ]
   },
   "GET /api/mainPageData": {
-    "description": "serves an array containing an object of manin page content",
+    "description": "Serves an array containing an object of main page content",
     "queries": [],
     "exampleResponse": [
       {
-        "title": "Our miOur mission is to help you move home.",
+        "title": "Our mission is to help you move home.",
         "subtitle": "Your belongings are in safe hands.",
         "content": "When it comes to helping you move your cherished belongings, we are there for you from pick up to delivery. You can enjoy a stress-free removal from start to finish. No job is too small or big for The Removal Man.",
         "url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.achievers.com%2Fblog%2Fbuilding-trust-workplace%2F&psig=AOvVaw2wqXJY6je_dlUQsO8OSUSG&ust=1730761892948000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjq5tykwYkDFQAAAAAdAAAAABAE"
@@ -22,19 +22,18 @@
     ]
   },
   "GET /api/secondPageData": {
-    "description": "serves an array containing an object of second page content",
+    "description": "Serves an array containing an object of second page content",
     "queries": [],
     "exampleResponse": [
       {
-        "title": "Our miOur mission is to help you move home.",
+        "title": "Our mission is to help you move home.",
         "content": "Your belongings are in safe hands.",
-        "second_url ": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.achievers.com%2Fblog%2Fbuilding-trust-workplace%2F&psig=AOvVaw2wqXJY6je_dlUQsO8OSUSG&ust=1730761892948000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjq5tykwYkDFQAAAAAdAAAAABAE"
+        "second_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.achievers.com%2Fblog%2Fbuilding-trust-workplace%2F&psig=AOvVaw2wqXJY6je_dlUQsO8OSUSG&ust=1730761892948000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjq5tykwYkDFQAAAAAdAAAAABAE"
       }
     ]
   },
-
   "GET /api/reviewData": {
-    "description": "serves an array of all review objects",
+    "description": "Serves an array of all review objects",
     "queries": [],
     "exampleResponse": [
       {
@@ -63,25 +62,23 @@
       }
     ]
   },
-
   "GET /api/contactDetails": {
-    "description": "serves an array containing an object of contact details",
+    "description": "Serves an array containing an object of contact details",
     "queries": [],
     "exampleResponse": [
       {
-        "Phone": "00350000000000",
-      "landline":"0000000000",
-      "instagram":"iiiii",
-      "facebook":"FFFF",
-      "whatsapp":"WWWW",
-      "email": "mm_oy@gmail.com"
+        "phone": "00350000000000",
+        "landline": "0000000000",
+        "instagram": "iiiii",
+        "facebook": "FFFF",
+        "whatsapp": "WWWW",
+        "email": "mm_oy@gmail.com"
       }
     ]
   },
-
-  "Post /api/companyDetails": {
+  "POST /api/companyDetails": {
     "description": "Post a logo",
-    "parametr": [],
+    "parameters": [],
     "exampleResponse": [
       {
         "company_name": "MM-newName",
@@ -89,33 +86,32 @@
       }
     ]
   },
-  
-  "Post /api/mainPageData": {
+  "POST /api/mainPageData": {
     "description": "Post mainPageData",
-    "parametr": [],
+    "parameters": [],
     "exampleResponse": [
       {
-        "title": "Our miOur mission is to help you move home.",
+        "title": "Our mission is to help you move home.",
         "subtitle": "Your belongings are in safe hands.",
         "content": "When it comes to helping you move your cherished belongings, we are there for you from pick up to delivery. You can enjoy a stress-free removal from start to finish. No job is too small or big for The Removal Man.",
         "main_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.achievers.com%2Fblog%2Fbuilding-trust-workplace%2F&psig=AOvVaw2wqXJY6je_dlUQsO8OSUSG&ust=1730761892948000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjq5tykwYkDFQAAAAAdAAAAABAE"
       }
     ]
   },
-  "Post /api/secondPageData": {
+  "POST /api/secondPageData": {
     "description": "Post secondPageData",
-    "parametr": [],
+    "parameters": [],
     "exampleResponse": [
       {
-        "title": "Our miOur mission is to help you move home.",
+        "title": "Our mission is to help you move home.",
         "content": "Your belongings are in safe hands.",
         "second_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.achievers.com%2Fblog%2Fbuilding-trust-workplace%2F&psig=AOvVaw2wqXJY6je_dlUQsO8OSUSG&ust=1730761892948000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjq5tykwYkDFQAAAAAdAAAAABAE"
       }
     ]
   },
-  "Post /api/reviewData": {
+  "POST /api/reviewData": {
     "description": "Post a review",
-    "parametr": [],
+    "parameters": [],
     "exampleResponse": {
       "body": "Itaque quisquam est similique et est perspiciatis reprehenderit voluptatem autem. Voluptatem accusantium eius error adipisci quibusdam doloribus.",
       "name": "grumpy19",
@@ -123,73 +119,175 @@
       "created_at": "2018-05-30T15:59:13.341Z"
     }
   },
-
-  "Post /api/contactDetails": {
+  "POST /api/contactDetails": {
     "description": "Post contactDetails",
-    "parametr": [],
+    "parameters": [],
     "exampleResponse": {
       "phone": "00350000000000",
       "email": "mm_oy@gmail.com"
     }
   },
-
-  "Patch /api/companyDetails":{
+  "PATCH /api/companyDetails": {
     "description": "Update companyDetails",
-    "parametr":[],
+    "parameters": [],
     "exampleResponse": [
       {
         "company_name": "MM-newName",
         "logo_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.klipartz.com%2Fen%2Fsearch%3Fq%3Dlion%2BLogo&psig=AOvVaw3hrxp_xBcmp4qtJaUDKAic&ust=1730761304374000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJDrzb6iwYkDFQAAAAAdAAAAABBh"
       }
     ]
-
   },
-
-  "Patch /api/mainPageData":{
+  "PATCH /api/mainPageData": {
     "description": "Update mainPageData",
-    "parametr":[],
+    "parameters": [],
     "exampleResponse": [
       {
-        "title": "Our miOur mission is to help you move home.",
+        "title": "Our mission is to help you move home.",
         "subtitle": "Your belongings are in safe hands.",
         "content": "When it comes to helping you move your cherished belongings, we are there for you from pick up to delivery. You can enjoy a stress-free removal from start to finish. No job is too small or big for The Removal Man.",
         "main_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.achievers.com%2Fblog%2Fbuilding-trust-workplace%2F&psig=AOvVaw2wqXJY6je_dlUQsO8OSUSG&ust=1730761892948000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjq5tykwYkDFQAAAAAdAAAAABAE"
       }
     ]
-
   },
-
-  "Patch /api/secondPageData":{
+  "PATCH /api/secondPageData": {
     "description": "Update secondPageData",
-    "parametr":[],
+    "parameters": [],
     "exampleResponse": [
       {
-        "title": "Our miOur mission is to help you move home.",
+        "title": "Our mission is to help you move home.",
         "content": "Your belongings are in safe hands.",
-        "second_url ": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.achievers.com%2Fblog%2Fbuilding-trust-workplace%2F&psig=AOvVaw2wqXJY6je_dlUQsO8OSUSG&ust=1730761892948000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjq5tykwYkDFQAAAAAdAAAAABAE"
+        "second_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.achievers.com%2Fblog%2Fbuilding-trust-workplace%2F&psig=AOvVaw2wqXJY6je_dlUQsO8OSUSG&ust=1730761892948000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjq5tykwYkDFQAAAAAdAAAAABAE"
       }
     ]
-
   },
-  
   "PATCH /api/contactDetails": {
     "description": "Update contact details",
     "queries": [],
     "exampleResponse": [
       {
-      "Phone": "00350000000000",
-      "landline":"0000000000",
-      "instagram":"iiiii",
-      "facebook":"FFFF",
-      "whatsapp":"WWWW",
-      "email": "mm_oy@gmail.com"
+        "phone": "00350000000000",
+        "landline": "0000000000",
+        "instagram": "iiiii",
+        "facebook": "FFFF",
+        "whatsapp": "WWWW",
+        "email": "mm_oy@gmail.com"
       }
     ]
   },
-  
-  "Delete /api/companyDetails": {},
-  "Delete /api/mainPageData": {},
-  "Delete /api/secondPageData": {},
-  "Delete /api/creviewData": {},
-  "Delete /api/contactDetails": {}
+  "DELETE /api/companyDetails": {
+    "description": "Delete companyDetails",
+    "parameters": [],
+    "exampleResponse": {
+      "message": "Company details deleted successfully"
+    }
+  },
+  "DELETE /api/mainPageData": {
+    "description": "Delete mainPageData",
+    "parameters": [],
+    "exampleResponse": {
+      "message": "Main page data deleted successfully"
+    }
+  },
+  "DELETE /api/secondPageData": {
+    "description": "Delete secondPageData",
+    "parameters": [],
+    "exampleResponse": {
+      "message": "Second page data deleted successfully"
+    }
+  },
+  "DELETE /api/reviewData": {
+    "description": "Delete reviewData",
+    "parameters": [],
+    "exampleResponse": {
+      "message": "Review data deleted successfully"
+    }
+  },
+  "DELETE /api/contactDetails": {
+    "description": "Delete contactDetails",
+    "parameters": [],
+    "exampleResponse": {
+      "message": "Contact details deleted successfully"
+    }
+  },
+  "GET /api/about": {
+    "description": "Serves an array containing an object of about content",
+    "queries": [],
+    "exampleResponse": [
+      {
+        "content": "We are a company dedicated to providing excellent service.",
+        "url1": "https://www.example.com/about1",
+        "url2": "https://www.example.com/about2"
+      }
+    ]
+  },
+  "POST /api/about": {
+    "description": "Post about content",
+    "parameters": [],
+    "exampleResponse": [
+      {
+        "content": "We are a company dedicated to providing excellent service.",
+        "url1": "https://www.example.com/about1",
+        "url2": "https://www.example.com/about2"
+      }
+    ]
+  },
+  "PATCH /api/about": {
+    "description": "Update about content",
+    "parameters": [],
+    "exampleResponse": [
+      {
+        "content": "We are a company dedicated to providing excellent service.",
+        "url1": "https://www.example.com/about1",
+        "url2": "https://www.example.com/about2"
+      }
+    ]
+  },
+  "DELETE /api/about": {
+    "description": "Delete about content",
+    "parameters": [],
+    "exampleResponse": {
+      "message": "About content deleted successfully"
+    }
+  },
+  "GET /api/values": {
+    "description": "Serves an array containing an object of company values",
+    "queries": [],
+    "exampleResponse": [
+      {
+        "content": "Our values are integrity, excellence, and customer satisfaction.",
+        "url": "https://www.example.com/values",
+        "description": "We strive to uphold our values in every aspect of our business."
+      }
+    ]
+  },
+  "POST /api/values": {
+    "description": "Post company values",
+    "parameters": [],
+    "exampleResponse": [
+      {
+        "content": "Our values are integrity, excellence, and customer satisfaction.",
+        "url": "https://www.example.com/values",
+        "description": "We strive to uphold our values in every aspect of our business."
+      }
+    ]
+  },
+  "PATCH /api/values": {
+    "description": "Update company values",
+    "parameters": [],
+    "exampleResponse": [
+      {
+        "content": "Our values are integrity, excellence, and customer satisfaction.",
+        "url": "https://www.example.com/values",
+        "description": "We strive to uphold our values in every aspect of our business."
+      }
+    ]
+  },
+  "DELETE /api/values": {
+    "description": "Delete company values",
+    "parameters": [],
+    "exampleResponse": {
+      "message": "Company values deleted successfully"
+    }
+  }
 }
+

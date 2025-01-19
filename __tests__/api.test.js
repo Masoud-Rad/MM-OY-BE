@@ -81,6 +81,7 @@ describe("Getting company's values", () => {
         expect(typeof result).toBe("object");
         expect(result.hasOwnProperty("content")).toBe(true);
         expect(result.hasOwnProperty("url")).toBe(true);
+        expect(result.hasOwnProperty("description")).toBe(true);
       });
   });
 });
@@ -367,16 +368,21 @@ describe("POST- company's values", () => {
   test("POST- status: 201- responds with the New company's values", () => {
     const newValuesInfo = {
       content: "value the company",
-      url: "www.New-link.com"
+      url: "www.New-link.com",
+      description: "value the company"
     };
     return request(app)
       .post("/api/value")
       .send(newValuesInfo)
       .expect(201)
       .then(({ body }) => { 
-        expect(Object.keys(body.value).length).toBe(2);
+        expect(Object.keys(body.value).length).toBe(3);
         expect(body.value.content).toBe("value the company");
         expect(body.value.url).toBe("www.New-link.com");
+        expect(body.value.description).toBe("value the company");
+        expect(body.value.hasOwnProperty("content")).toBe(true);
+        expect(body.value.hasOwnProperty("url")).toBe(true);
+        expect(body.value.hasOwnProperty("description")).toBe(true);
       });
   });
 });

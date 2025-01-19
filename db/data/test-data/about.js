@@ -11,6 +11,7 @@ Our services extend beyond just transporting goods. Whether you need assistance 
 
 Thank you for considering [Your Company Name] for your moving needs. We look forward to helping you turn the page to your new chapter, one move at a time!`,
     url1: "https://images2.alphacoders.com/206/thumb-1920-206740.jpg",
-    url2: "https://www.pixelstalk.net/wp-content/uploads/images2/Yellow-Live-Backgrounds.jpg"
-  }
+    url2: "https://www.pixelstalk.net/wp-content/uploads/images2/Yellow-Live-Backgrounds.jpg",
+    
+  },
 ];

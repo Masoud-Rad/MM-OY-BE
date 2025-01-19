@@ -82,7 +82,8 @@ const seed = ({
       return db.query(`
                 CREATE TABLE value (
                     content VARCHAR,
-                    url VARCHAR
+                    url VARCHAR,
+                    description VARCHAR
                 );
             `);
     })
@@ -170,10 +171,11 @@ const seed = ({
     .then(() => {
       const insertValuesQuery = format(
         `
-          INSERT INTO value (content, url) 
-          VALUES (%L, %L)`,
+          INSERT INTO value (content, url, description) 
+          VALUES (%L, %L, %L)`,
         values[0].content,
-        values[0].url
+        values[0].url,
+        values[0].description
       );
 
       return db.query(insertValuesQuery);
